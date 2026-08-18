@@ -407,9 +407,9 @@ export const CharacterExperience: React.FC<CharacterExperienceProps> = ({ render
             const heroProgress = Math.min(1.0, scrollProgressRef.current / 0.12);
             scaleFactor = 0.80 + heroProgress * 0.20;
           } else {
-            // Mobile Hero Mode (< 1024px): Scale character (0.65 -> 1.0) so mascot sits cleanly in middle 40% of viewport
+            // Mobile Hero Mode (< 1024px): Scale character (0.95 -> 1.0) to fill width boldly on mobile
             const heroProgress = Math.min(1.0, scrollProgressRef.current / 0.12);
-            scaleFactor = 0.65 + heroProgress * 0.35;
+            scaleFactor = 0.95 + heroProgress * 0.05;
           }
 
           drawWidth *= scaleFactor;
@@ -422,7 +422,7 @@ export const CharacterExperience: React.FC<CharacterExperienceProps> = ({ render
           if (displayWidth < 1024) {
             const heroProgress = Math.min(1.0, scrollProgressRef.current / 0.12);
             // Position mascot head cleanly between value badges and bottom cards
-            const heroShiftY = (1 - heroProgress) * (displayHeight * 0.02);
+            const heroShiftY = (1 - heroProgress) * (displayHeight * 0.04);
             // Shift mascot right in Section 2 so 01,02,03 text sits on clean left space
             const turnShiftX = heroProgress * (displayWidth * 0.18);
 
