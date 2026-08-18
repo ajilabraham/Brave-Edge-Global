@@ -93,16 +93,6 @@ export const HeroOverlay: React.FC = () => {
               <span>See real use cases</span>
             </a>
           </div>
-
-          {/* Subtle Scroll Prompt Indicator */}
-          <div className="flex items-center gap-2.5 pt-4">
-            <div className="w-7 h-7 rounded-full bg-white/90 border border-neutral-200 shadow-2xs flex items-center justify-center text-[#F27C23] animate-bounce shrink-0">
-              <ArrowDown className="w-3.5 h-3.5 stroke-[2.5]" />
-            </div>
-            <span className="text-xs font-medium text-neutral-500 tracking-wide">
-              Scroll down to know more
-            </span>
-          </div>
         </div>
 
         {/* CENTER COLUMN: Protected Empty Visual Zone for Character Mascot (Cols 6-8) */}
@@ -303,6 +293,20 @@ export const HeroOverlay: React.FC = () => {
           </div>
         </div>
 
+      </div>
+
+      {/* ========================================================================= */}
+      {/* DESKTOP CENTRALISED SCROLL PROMPT INDICATOR BELOW CHARACTER               */}
+      {/* ========================================================================= */}
+      <div className="hidden lg:flex w-full flex-col items-center justify-center pt-2 pb-2 pointer-events-auto">
+        <div className="flex items-center gap-2.5 bg-white/90 backdrop-blur-md border border-neutral-200/80 px-4 py-2 rounded-full shadow-2xs hover:border-orange-300 transition-colors">
+          <div className="w-6 h-6 rounded-full bg-orange-50 border border-orange-200 flex items-center justify-center text-[#F27C23] animate-bounce shrink-0">
+            <ArrowDown className="w-3.5 h-3.5 stroke-[2.5]" />
+          </div>
+          <span className="text-xs font-semibold text-neutral-600 tracking-wide">
+            Scroll down to know more
+          </span>
+        </div>
       </div>
 
     </div>
