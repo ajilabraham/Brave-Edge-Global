@@ -401,15 +401,15 @@ export const CharacterExperience: React.FC<CharacterExperienceProps> = ({ render
             drawHeight = displayWidth / imgAspect;
           }
 
-          // Desktop Hero Mode: Scale character slightly (0.80 -> 1.0) so mascot head stays strictly within the 33%-40% center zone
+          // Desktop Hero Mode (>= 1024px): Scale character slightly (0.80 -> 1.0)
           let scaleFactor = 1.0;
           if (displayWidth >= 1024) {
             const heroProgress = Math.min(1.0, scrollProgressRef.current / 0.12);
             scaleFactor = 0.80 + heroProgress * 0.20;
           } else {
-            // Mobile Hero Mode (< 1024px): Scale character slightly (0.68 -> 1.0) so head sits lower on mobile below CTAs
+            // Mobile Hero Mode (< 1024px): Scale character (0.75 -> 1.0) so mascot sits cleanly in middle of viewport
             const heroProgress = Math.min(1.0, scrollProgressRef.current / 0.12);
-            scaleFactor = 0.68 + heroProgress * 0.32;
+            scaleFactor = 0.75 + heroProgress * 0.25;
           }
 
           drawWidth *= scaleFactor;
@@ -421,9 +421,9 @@ export const CharacterExperience: React.FC<CharacterExperienceProps> = ({ render
           // Mobile Responsive Offsets (Only applied on mobile < 1024px, preserving desktop >= 1024px 100%)
           if (displayWidth < 1024) {
             const heroProgress = Math.min(1.0, scrollProgressRef.current / 0.12);
-            // In Section 1 (State 1), shift mascot down on mobile so head starts below CTAs (Y > 55%)
-            const heroShiftY = (1 - heroProgress) * (displayHeight * 0.22);
-            // In Section 2 (State 2), shift mascot right on mobile so 01,02,03 text sits on clean left space
+            // Shift mascot slightly down in Section 1 so head starts cleanly below header & red box CTAs
+            const heroShiftY = (1 - heroProgress) * (displayHeight * 0.07);
+            // Shift mascot right in Section 2 so 01,02,03 text sits on clean left space
             const turnShiftX = heroProgress * (displayWidth * 0.18);
 
             offsetY += heroShiftY;

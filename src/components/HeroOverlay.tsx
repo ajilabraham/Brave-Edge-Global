@@ -169,31 +169,55 @@ export const HeroOverlay: React.FC = () => {
       </div>
 
       {/* ========================================================================= */}
-      {/* MOBILE PORTRAIT LAYOUT (< 1024px) — CLEAN, COMPACT, ZERO OVERLAP          */}
+      {/* MOBILE PORTRAIT LAYOUT (< 1024px) — CTAs MOVED TO RED BOX (RIGHT OF HEADLINE) */}
       {/* ========================================================================= */}
-      <div className="lg:hidden w-full h-full flex flex-col justify-between px-4 sm:px-6 pt-16 pb-2 overflow-y-auto pointer-events-auto z-20 space-y-2.5">
+      <div className="lg:hidden w-full h-full flex flex-col justify-between px-4 sm:px-6 pt-16 pb-2 overflow-y-auto pointer-events-auto z-20 space-y-2">
         
         {/* Mobile Top Hero Zone */}
-        <div className="space-y-2.5 text-left max-w-sm">
+        <div className="space-y-2 text-left w-full">
           {/* Micro Tag Pill */}
-          <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#f0ecfc] text-[#58548C] text-[10px] font-extrabold tracking-wider uppercase shadow-2xs">
-            <span className="w-2 h-2 rounded-full bg-[#F27C23]" />
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#f0ecfc] text-[#58548C] text-[9px] font-extrabold tracking-wider uppercase shadow-2xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#F27C23]" />
             <span>AI-FIRST. CONTEXT DRIVEN. PRIVACY BY DESIGN</span>
           </div>
 
-          {/* Main Headline */}
-          <h1 className="text-3xl sm:text-4xl font-black text-neutral-900 tracking-tight leading-[1.05]">
-            Own your
-            <span className="block bg-gradient-to-r from-[#F27C23] via-[#E75038] to-[#58548C] bg-clip-text text-transparent font-black mt-0.5">
-              Intelligence.
-            </span>
-          </h1>
+          {/* 2-Column Mobile Grid: Left Headline & Subtext | Right CTAs (Positioned in Red Box Zone) */}
+          <div className="grid grid-cols-12 gap-2 items-start">
+            
+            {/* Left Column (Cols 1-7): Headline & Subtext */}
+            <div className="col-span-7 space-y-1">
+              <h1 className="text-2xl sm:text-3xl font-black text-neutral-900 tracking-tight leading-[1.05]">
+                Own your
+                <span className="block bg-gradient-to-r from-[#F27C23] via-[#E75038] to-[#58548C] bg-clip-text text-transparent font-black mt-0.5">
+                  Intelligence.
+                </span>
+              </h1>
+              <div className="text-[11px] text-neutral-600 font-normal leading-tight space-y-0.5">
+                <p>Modernise digital presence.</p>
+                <p>Connect your knowledge.</p>
+                <p>Build AI around context.</p>
+              </div>
+            </div>
 
-          {/* 3-Line Copy */}
-          <div className="text-xs sm:text-sm text-neutral-600 font-normal leading-tight space-y-0.5">
-            <p>Modernise your digital presence.</p>
-            <p>Connect your knowledge.</p>
-            <p>Build AI around your context.</p>
+            {/* Right Column (Cols 8-12, Marked Red Box Zone): Compact Action CTAs */}
+            <div className="col-span-5 flex flex-col gap-1.5 pt-0.5">
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center gap-1.5 bg-[#F27C23] text-white px-2.5 py-2 rounded-xl text-[10px] font-bold shadow-md text-center leading-tight"
+              >
+                <span>Explore how it works</span>
+                <ArrowRight className="w-3 h-3 shrink-0" />
+              </a>
+
+              <a
+                href="#use-cases"
+                className="inline-flex items-center justify-center gap-1.5 bg-white/95 border border-[#58548C]/30 text-[#58548C] px-2.5 py-2 rounded-xl text-[10px] font-bold shadow-2xs text-center leading-tight"
+              >
+                <Play className="w-2.5 h-2.5 fill-[#58548C] text-[#58548C] shrink-0" />
+                <span>See real use cases</span>
+              </a>
+            </div>
+
           </div>
 
           {/* 2 Value Items */}
@@ -201,41 +225,22 @@ export const HeroOverlay: React.FC = () => {
             <div className="flex items-start gap-1.5">
               <ShieldCheck className="w-3.5 h-3.5 text-[#F27C23] shrink-0 mt-0.5" />
               <div>
-                <h4 className="text-[11px] font-bold text-neutral-900 leading-snug">Your data stays yours</h4>
-                <p className="text-[10px] text-neutral-500 leading-tight">Private & secure.</p>
+                <h4 className="text-[10px] font-bold text-neutral-900 leading-snug">Your data stays yours</h4>
+                <p className="text-[9px] text-neutral-500 leading-tight">Private & secure.</p>
               </div>
             </div>
 
             <div className="flex items-start gap-1.5">
               <Cpu className="w-3.5 h-3.5 text-[#58548C] shrink-0 mt-0.5" />
               <div>
-                <h4 className="text-[11px] font-bold text-neutral-900 leading-snug">AI that understands</h4>
-                <p className="text-[10px] text-neutral-500 leading-tight">Context-aware agents.</p>
+                <h4 className="text-[10px] font-bold text-neutral-900 leading-snug">AI that understands</h4>
+                <p className="text-[9px] text-neutral-500 leading-tight">Context-aware agents.</p>
               </div>
             </div>
           </div>
-
-          {/* Action CTAs */}
-          <div className="flex flex-col sm:flex-row gap-2 pt-0.5">
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center gap-2 bg-[#F27C23] text-white px-4 py-2.5 rounded-xl text-xs font-bold shadow-md"
-            >
-              <span>Explore how it works</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </a>
-
-            <a
-              href="#use-cases"
-              className="inline-flex items-center justify-center gap-2 bg-white/95 border border-[#58548C]/30 text-[#58548C] px-4 py-2.5 rounded-xl text-xs font-bold shadow-2xs"
-            >
-              <Play className="w-3 h-3 fill-[#58548C] text-[#58548C]" />
-              <span>See real use cases</span>
-            </a>
-          </div>
         </div>
 
-        {/* Mobile Swipeable 3 Action Cards Carousel */}
+        {/* Mobile Visible 3 Action Cards Carousel */}
         <div className="w-full pt-1">
           <p className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 mb-1 text-left">
             Services & Solutions →
