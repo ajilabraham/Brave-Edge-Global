@@ -401,11 +401,11 @@ export const CharacterExperience: React.FC<CharacterExperienceProps> = ({ render
             drawHeight = displayWidth / imgAspect;
           }
 
-          // Desktop Hero Mode (>= 1024px): Scale character (0.95 -> 1.0) as indicated by red arrows
+          // Desktop Hero Mode (>= 1024px): Scale character 10% more in Section 1 (1.05 -> 1.0)
           let scaleFactor = 1.0;
           if (displayWidth >= 1024) {
             const heroProgress = Math.min(1.0, scrollProgressRef.current / 0.12);
-            scaleFactor = 0.95 + heroProgress * 0.05;
+            scaleFactor = 1.05 - heroProgress * 0.05;
           } else {
             // Mobile Hero Mode (< 1024px): 100% PRESERVED & UNTOUCHED (0.95 -> 1.0)
             const heroProgress = Math.min(1.0, scrollProgressRef.current / 0.12);
