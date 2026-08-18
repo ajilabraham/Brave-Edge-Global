@@ -411,8 +411,20 @@ export const CharacterExperience: React.FC<CharacterExperienceProps> = ({ render
           drawWidth *= scaleFactor;
           drawHeight *= scaleFactor;
 
-          const offsetX = (displayWidth - drawWidth) / 2;
-          const offsetY = (displayHeight - drawHeight) / 2;
+          let offsetX = (displayWidth - drawWidth) / 2;
+          let offsetY = (displayHeight - drawHeight) / 2;
+
+          // Mobile Responsive Offsets (Only applied on mobile < 1024px, preserving desktop >= 1024px 100%)
+          if (displayWidth < 1024) {
+            const heroProgress = Math.min(1.0, scrollProgressRef.current / 0.12);
+            // In Section 1 (State 1), shift mascot down slightly on mobile so hero text sits in clean top space
+            const heroShiftY = (1 - heroProgress) * (displayHeight * 0.15);
+            // In Section 2 (State 2), shift mascot right on mobile so 01,02,03 text sits on clean left space
+            const turnShiftX = heroProgress * (displayWidth * 0.18);
+
+            offsetY += heroShiftY;
+            offsetX += turnShiftX;
+          }
 
           ctx.drawImage(activeImage, offsetX, offsetY, drawWidth, drawHeight);
           ctx.restore();
