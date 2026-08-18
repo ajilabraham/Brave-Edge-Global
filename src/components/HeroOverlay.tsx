@@ -168,14 +168,14 @@ export const HeroOverlay: React.FC = () => {
       </div>
 
       {/* ========================================================================= */}
-      {/* MOBILE PORTRAIT LAYOUT (< 1024px) — RESPONSIVE SPACING & 100% VISIBLE CARDS */}
+      {/* MOBILE PORTRAIT LAYOUT (< 1024px) — 2-LINE SPACE ADDED BELOW MICRO TAG     */}
       {/* ========================================================================= */}
       <div className="lg:hidden w-full flex flex-col justify-start px-4 sm:px-6 pt-16 pointer-events-auto z-20 space-y-3">
         
         {/* Mobile Top Hero Zone */}
         <div className="space-y-2 text-left w-full">
-          {/* Micro Tag Pill (With generous top breathing room below header) */}
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f0ecfc] text-[#58548C] text-[10px] sm:text-xs font-extrabold tracking-wider uppercase shadow-2xs mb-0.5">
+          {/* Micro Tag Pill (With 2-line vertical gap mb-3.5 below pill) */}
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f0ecfc] text-[#58548C] text-[10px] sm:text-xs font-extrabold tracking-wider uppercase shadow-2xs mb-3.5">
             <span className="w-2 h-2 rounded-full bg-[#F27C23]" />
             <span>AI-FIRST. CONTEXT DRIVEN. PRIVACY BY DESIGN</span>
           </div>
@@ -239,7 +239,7 @@ export const HeroOverlay: React.FC = () => {
           </div>
         </div>
 
-        {/* Mobile Services & Solutions Cards Container (Generous top breathing room above section) */}
+        {/* Mobile Services & Solutions Cards Container */}
         <div className="w-full pt-3">
           <p className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider text-neutral-600 mb-1.5 text-left flex items-center gap-1">
             <span>Services & Solutions</span>
