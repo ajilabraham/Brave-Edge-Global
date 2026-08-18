@@ -296,16 +296,11 @@ export const HeroOverlay: React.FC = () => {
       </div>
 
       {/* ========================================================================= */}
-      {/* DESKTOP CENTRALISED SCROLL PROMPT INDICATOR BELOW CHARACTER               */}
+      {/* DESKTOP CENTRALISED SCROLL PROMPT ICON-ONLY BADGE BELOW CHARACTER          */}
       {/* ========================================================================= */}
-      <div className="hidden lg:flex w-full flex-col items-center justify-center pt-2 pb-2 pointer-events-auto">
-        <div className="flex items-center gap-2.5 bg-white/90 backdrop-blur-md border border-neutral-200/80 px-4 py-2 rounded-full shadow-2xs hover:border-orange-300 transition-colors">
-          <div className="w-6 h-6 rounded-full bg-orange-50 border border-orange-200 flex items-center justify-center text-[#F27C23] animate-bounce shrink-0">
-            <ArrowDown className="w-3.5 h-3.5 stroke-[2.5]" />
-          </div>
-          <span className="text-xs font-semibold text-neutral-600 tracking-wide">
-            Scroll down to know more
-          </span>
+      <div className="hidden lg:flex w-full flex-col items-center justify-center pt-2 pb-3 pointer-events-auto">
+        <div className="w-9 h-9 rounded-full bg-white/95 backdrop-blur-md border border-neutral-200/90 shadow-md flex items-center justify-center text-[#F27C23] animate-bounce hover:border-[#F27C23] transition-colors">
+          <ArrowDown className="w-4 h-4 stroke-[2.5]" />
         </div>
       </div>
 
