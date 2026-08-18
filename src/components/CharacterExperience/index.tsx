@@ -407,7 +407,7 @@ export const CharacterExperience: React.FC<CharacterExperienceProps> = ({ render
             const heroProgress = Math.min(1.0, scrollProgressRef.current / 0.12);
             scaleFactor = 0.80 + heroProgress * 0.20;
           } else {
-            // Mobile Hero Mode (< 1024px): Scale character (0.95 -> 1.0) to fill width boldly on mobile
+            // Mobile Hero Mode (< 1024px): Scale character (0.95 -> 1.0) to fill width
             const heroProgress = Math.min(1.0, scrollProgressRef.current / 0.12);
             scaleFactor = 0.95 + heroProgress * 0.05;
           }
@@ -421,8 +421,8 @@ export const CharacterExperience: React.FC<CharacterExperienceProps> = ({ render
           // Mobile Responsive Offsets (Only applied on mobile < 1024px, preserving desktop >= 1024px 100%)
           if (displayWidth < 1024) {
             const heroProgress = Math.min(1.0, scrollProgressRef.current / 0.12);
-            // Position mascot head cleanly between value badges and bottom cards
-            const heroShiftY = (1 - heroProgress) * (displayHeight * 0.04);
+            // Shift mascot canvas drawing DOWN on mobile as indicated by red arrow (displayHeight * 0.16)
+            const heroShiftY = (1 - heroProgress) * (displayHeight * 0.16);
             // Shift mascot right in Section 2 so 01,02,03 text sits on clean left space
             const turnShiftX = heroProgress * (displayWidth * 0.18);
 

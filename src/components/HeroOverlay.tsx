@@ -11,7 +11,7 @@ import {
 
 export const HeroOverlay: React.FC = () => {
   return (
-    <div className="relative w-full h-full pt-12 lg:pt-20 pb-2 flex flex-col justify-between pointer-events-none z-10 select-none">
+    <div className="relative w-full h-full pt-16 lg:pt-20 pb-2 flex flex-col justify-between pointer-events-none z-10 select-none">
       
       {/* ========================================================================= */}
       {/* DESKTOP LAYOUT (>= 1024px) — 100% PRESERVED, UNTOUCHED & LOCKED           */}
@@ -168,23 +168,23 @@ export const HeroOverlay: React.FC = () => {
       </div>
 
       {/* ========================================================================= */}
-      {/* MOBILE PORTRAIT LAYOUT (< 1024px) — CARDS PLACED DIRECTLY BELOW HERO ZONE */}
+      {/* MOBILE PORTRAIT LAYOUT (< 1024px) — RESPONSIVE SPACING & 100% VISIBLE CARDS */}
       {/* ========================================================================= */}
-      <div className="lg:hidden w-full flex flex-col justify-start px-3.5 sm:px-6 pt-12 pointer-events-auto z-20 space-y-2">
+      <div className="lg:hidden w-full flex flex-col justify-start px-4 sm:px-6 pt-16 pointer-events-auto z-20 space-y-3">
         
         {/* Mobile Top Hero Zone */}
-        <div className="space-y-1.5 text-left w-full">
-          {/* Micro Tag Pill */}
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#f0ecfc] text-[#58548C] text-[9px] sm:text-[10px] font-extrabold tracking-wider uppercase shadow-2xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#F27C23]" />
+        <div className="space-y-2 text-left w-full">
+          {/* Micro Tag Pill (With generous top breathing room below header) */}
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f0ecfc] text-[#58548C] text-[10px] sm:text-xs font-extrabold tracking-wider uppercase shadow-2xs mb-0.5">
+            <span className="w-2 h-2 rounded-full bg-[#F27C23]" />
             <span>AI-FIRST. CONTEXT DRIVEN. PRIVACY BY DESIGN</span>
           </div>
 
           {/* 2-Column Mobile Grid: Left Headline & Subtext | Right CTAs */}
-          <div className="grid grid-cols-12 gap-2 items-start">
+          <div className="grid grid-cols-12 gap-2.5 items-start">
             
             {/* Left Column (Cols 1-7): Punchy Headline & Subtext */}
-            <div className="col-span-7 space-y-1">
+            <div className="col-span-7 space-y-1.5">
               <h1 className="text-2xl sm:text-3xl font-black text-neutral-900 tracking-tight leading-[1.05]">
                 Own your
                 <span className="block bg-gradient-to-r from-[#F27C23] via-[#E75038] to-[#58548C] bg-clip-text text-transparent font-black mt-0.5">
@@ -220,7 +220,7 @@ export const HeroOverlay: React.FC = () => {
           </div>
 
           {/* 2 Value Items */}
-          <div className="grid grid-cols-2 gap-2 pt-0.5">
+          <div className="grid grid-cols-2 gap-2 pt-1">
             <div className="flex items-start gap-1.5">
               <ShieldCheck className="w-3.5 h-3.5 text-[#F27C23] shrink-0 mt-0.5" />
               <div>
@@ -239,13 +239,13 @@ export const HeroOverlay: React.FC = () => {
           </div>
         </div>
 
-        {/* Mobile Services & Solutions Cards Container — PLACED DIRECTLY BELOW HERO ZONE AT Y ~ 240px */}
-        <div className="w-full pt-1.5">
-          <p className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider text-neutral-600 mb-1 text-left flex items-center gap-1">
+        {/* Mobile Services & Solutions Cards Container (Generous top breathing room above section) */}
+        <div className="w-full pt-3">
+          <p className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider text-neutral-600 mb-1.5 text-left flex items-center gap-1">
             <span>Services & Solutions</span>
             <ArrowRight className="w-3 h-3 text-[#F27C23]" />
           </p>
-          <div className="flex overflow-x-auto gap-2 pb-1 snap-x scrollbar-none">
+          <div className="flex overflow-x-auto gap-2.5 pb-1 snap-x scrollbar-none">
             
             {/* Card 1: Modern Websites */}
             <a
