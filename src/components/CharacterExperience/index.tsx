@@ -31,7 +31,11 @@ const ANCHOR_POINTS: [number, number][] = [
   [180,  45]    // Screen Left Central (wrap)
 ];
 
-export const CharacterExperience: React.FC = () => {
+interface CharacterExperienceProps {
+  renderOverlay?: (scrollProgress: number) => React.ReactNode;
+}
+
+export const CharacterExperience: React.FC<CharacterExperienceProps> = ({ renderOverlay }) => {
   const containerRef = useRef<HTMLElement | null>(null);
   const stickyStageRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -64,6 +68,7 @@ export const CharacterExperience: React.FC = () => {
   const targetScrubFrameRef = useRef<number>(0);
 
   // State 2 Scroll Turn animation lerp state
+  const [scrollProgressState, setScrollProgressState] = useState<number>(0);
   const scrollProgressRef = useRef<number>(0);
   const currentTurnFrameRef = useRef<number>(0);
   const targetTurnFrameRef = useRef<number>(0);
@@ -136,12 +141,14 @@ export const CharacterExperience: React.FC = () => {
       if (maxScrollable <= 0) {
         scrollProgressRef.current = 0;
         targetTurnFrameRef.current = 0;
+        setScrollProgressState(0);
         return;
       }
 
       const scrolledDistance = -rect.top;
       const progress = Math.min(1.0, Math.max(0.0, scrolledDistance / maxScrollable));
       scrollProgressRef.current = progress;
+      setScrollProgressState(progress);
 
       // Target frame in 121-frame scroll-turn sequence
       targetTurnFrameRef.current = Math.min(120, Math.max(0, Math.round(progress * 120)));
@@ -335,7 +342,6 @@ export const CharacterExperience: React.FC = () => {
           activeImage = assets.idleImages[idleFrameIdx];
         }
       } else {
-        // IDLE MODE: State 1 Background Color (#f6f5f8)
         targetBg = STATE1_BG_COLOR;
         const elapsedIdleSec = (now - idleStartTimeRef.current) / 1000;
         const idleFrameIdx = Math.floor(elapsedIdleSec * IDLE_FPS) % TOTAL_IDLE_FRAMES;
@@ -353,7 +359,6 @@ export const CharacterExperience: React.FC = () => {
       const bgB = Math.round(curBg.b);
       const currentBgHex = `rgb(${bgR}, ${bgG}, ${bgB})`;
 
-      // Synchronize section and page background DOM color
       if (containerRef.current) {
         containerRef.current.style.backgroundColor = currentBgHex;
       }
@@ -361,7 +366,7 @@ export const CharacterExperience: React.FC = () => {
         stickyStageRef.current.style.backgroundColor = currentBgHex;
       }
 
-      // Render active frame to Canvas with exact background fill for 100% seamless blending
+      // Render active frame to Canvas with exact background fill & responsive scale
       const canvas = canvasRef.current;
       if (canvas && activeImage && activeImage.complete) {
         const ctx = canvas.getContext('2d');
@@ -378,7 +383,6 @@ export const CharacterExperience: React.FC = () => {
           ctx.save();
           ctx.scale(dpr, dpr);
           
-          // Exact background fill matching character frame background
           ctx.fillStyle = currentBgHex;
           ctx.fillRect(0, 0, displayWidth, displayHeight);
 
@@ -388,18 +392,27 @@ export const CharacterExperience: React.FC = () => {
 
           let drawWidth = displayWidth;
           let drawHeight = displayHeight;
-          let offsetX = 0;
-          let offsetY = 0;
 
           if (canvasAspect > imgAspect) {
             drawWidth = displayHeight * imgAspect;
             drawHeight = displayHeight;
-            offsetX = (displayWidth - drawWidth) / 2;
           } else {
             drawWidth = displayWidth;
             drawHeight = displayWidth / imgAspect;
-            offsetY = (displayHeight - drawHeight) / 2;
           }
+
+          // Desktop Hero Mode: Scale character slightly (0.80 -> 1.0) so mascot head stays strictly within the 33%-40% center zone
+          let scaleFactor = 1.0;
+          if (displayWidth >= 1024) {
+            const heroProgress = Math.min(1.0, scrollProgressRef.current / 0.12);
+            scaleFactor = 0.80 + heroProgress * 0.20;
+          }
+
+          drawWidth *= scaleFactor;
+          drawHeight *= scaleFactor;
+
+          const offsetX = (displayWidth - drawWidth) / 2;
+          const offsetY = (displayHeight - drawHeight) / 2;
 
           ctx.drawImage(activeImage, offsetX, offsetY, drawWidth, drawHeight);
           ctx.restore();
@@ -416,7 +429,7 @@ export const CharacterExperience: React.FC = () => {
     };
   }, [loadState.isIdleReady]);
 
-  // Loading Screen (State 1 matching background)
+  // Loading Screen
   if (!loadState.isIdleReady) {
     const progressPercent = Math.round((loadState.loadedTotal / 52) * 100);
     return (
@@ -444,6 +457,9 @@ export const CharacterExperience: React.FC = () => {
       <div ref={stickyStageRef} className="sticky top-0 left-0 w-full h-screen overflow-hidden flex items-center justify-center bg-[#f6f5f8]">
         {/* Fullscreen Canvas Render Surface */}
         <canvas ref={canvasRef} className="w-full h-full block" />
+
+        {/* Render Overlay (Hero Left Content & Section 2 Scroll Narrative) */}
+        {renderOverlay && renderOverlay(scrollProgressState)}
       </div>
     </section>
   );
