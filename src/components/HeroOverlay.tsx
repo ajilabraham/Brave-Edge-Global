@@ -11,7 +11,7 @@ import {
 
 export const HeroOverlay: React.FC = () => {
   return (
-    <div className="relative w-full h-full pt-14 lg:pt-20 pb-1 flex flex-col justify-between pointer-events-none z-10 select-none">
+    <div className="relative w-full h-full pt-12 lg:pt-20 pb-2 flex flex-col justify-between pointer-events-none z-10 select-none">
       
       {/* ========================================================================= */}
       {/* DESKTOP LAYOUT (>= 1024px) — 100% PRESERVED, UNTOUCHED & LOCKED           */}
@@ -168,9 +168,9 @@ export const HeroOverlay: React.FC = () => {
       </div>
 
       {/* ========================================================================= */}
-      {/* MOBILE PORTRAIT LAYOUT (< 1024px) — CARDS VISIBLE ON FIRST LOAD IMMEDIATELY */}
+      {/* MOBILE PORTRAIT LAYOUT (< 1024px) — CARDS PULLED HIGH UP & 100% VISIBLE    */}
       {/* ========================================================================= */}
-      <div className="lg:hidden w-full h-full flex flex-col justify-between px-3.5 sm:px-6 pt-14 pb-1 overflow-y-auto pointer-events-auto z-20 space-y-1">
+      <div className="lg:hidden w-full h-full flex flex-col justify-between px-3.5 sm:px-6 pt-12 pb-2 overflow-y-auto pointer-events-auto z-20 space-y-1">
         
         {/* Mobile Top Hero Zone */}
         <div className="space-y-1.5 text-left w-full">
@@ -239,8 +239,8 @@ export const HeroOverlay: React.FC = () => {
           </div>
         </div>
 
-        {/* Mobile Visible 3 Action Cards Carousel (Brought UP to be 100% visible on first load) */}
-        <div className="w-full pt-0.5 pb-0.5">
+        {/* Mobile Visible 3 Action Cards Carousel (Brought UP high to be 100% visible on first load) */}
+        <div className="w-full mt-auto pt-1 pb-2">
           <p className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider text-neutral-600 mb-1 text-left flex items-center gap-1">
             <span>Services & Solutions</span>
             <ArrowRight className="w-3 h-3 text-[#F27C23]" />
@@ -250,9 +250,9 @@ export const HeroOverlay: React.FC = () => {
             {/* Card 1 */}
             <a
               href="#websites"
-              className="snap-start shrink-0 w-[210px] p-2.5 rounded-xl bg-white border border-neutral-200/90 shadow-md flex items-center gap-2.5"
+              className="snap-start shrink-0 w-[205px] p-2.5 rounded-xl bg-white/95 border border-neutral-200/90 shadow-md flex items-center gap-2.5"
             >
-              <div className="w-8 h-8 rounded-full bg-[#F27C23] text-white flex items-center justify-center shrink-0 shadow-xs">
+              <div className="w-7.5 h-7.5 rounded-full bg-[#F27C23] text-white flex items-center justify-center shrink-0 shadow-xs">
                 <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
               </div>
               <div className="text-left">
@@ -264,9 +264,9 @@ export const HeroOverlay: React.FC = () => {
             {/* Card 2 */}
             <a
               href="#solutions"
-              className="snap-start shrink-0 w-[210px] p-2.5 rounded-xl bg-white border border-neutral-200/90 shadow-md flex items-center gap-2.5"
+              className="snap-start shrink-0 w-[205px] p-2.5 rounded-xl bg-white/95 border border-neutral-200/90 shadow-md flex items-center gap-2.5"
             >
-              <div className="w-8 h-8 rounded-full bg-[#58548C] text-white flex items-center justify-center shrink-0 shadow-xs">
+              <div className="w-7.5 h-7.5 rounded-full bg-[#58548C] text-white flex items-center justify-center shrink-0 shadow-xs">
                 <Box className="w-3.5 h-3.5 stroke-[2]" />
               </div>
               <div className="text-left">
@@ -278,9 +278,9 @@ export const HeroOverlay: React.FC = () => {
             {/* Card 3 */}
             <a
               href="#contact"
-              className="snap-start shrink-0 w-[210px] p-2.5 rounded-xl bg-white border border-neutral-200/90 shadow-md flex items-center gap-2.5"
+              className="snap-start shrink-0 w-[205px] p-2.5 rounded-xl bg-white/95 border border-neutral-200/90 shadow-md flex items-center gap-2.5"
             >
-              <div className="w-8 h-8 rounded-full bg-white border-2 border-[#F27C23] text-[#F27C23] flex items-center justify-center shrink-0 shadow-xs">
+              <div className="w-7.5 h-7.5 rounded-full bg-white border-2 border-[#F27C23] text-[#F27C23] flex items-center justify-center shrink-0 shadow-xs">
                 <Mail className="w-3.5 h-3.5 stroke-[2]" />
               </div>
               <div className="text-left">
