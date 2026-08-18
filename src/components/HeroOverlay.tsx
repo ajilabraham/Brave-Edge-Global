@@ -5,6 +5,7 @@ import {
   Play,
   ShieldCheck,
   Cpu,
+  ArrowDown,
   Box,
   Mail
 } from 'lucide-react';
@@ -92,6 +93,16 @@ export const HeroOverlay: React.FC = () => {
               <span>See real use cases</span>
             </a>
           </div>
+
+          {/* Subtle Scroll Prompt Indicator */}
+          <div className="flex items-center gap-2.5 pt-4">
+            <div className="w-7 h-7 rounded-full bg-white/90 border border-neutral-200 shadow-2xs flex items-center justify-center text-[#F27C23] animate-bounce shrink-0">
+              <ArrowDown className="w-3.5 h-3.5 stroke-[2.5]" />
+            </div>
+            <span className="text-xs font-medium text-neutral-500 tracking-wide">
+              Scroll down to know more
+            </span>
+          </div>
         </div>
 
         {/* CENTER COLUMN: Protected Empty Visual Zone for Character Mascot (Cols 6-8) */}
@@ -168,13 +179,13 @@ export const HeroOverlay: React.FC = () => {
       </div>
 
       {/* ========================================================================= */}
-      {/* MOBILE PORTRAIT LAYOUT (< 1024px) — 2-LINE SPACE ADDED BELOW MICRO TAG     */}
+      {/* MOBILE PORTRAIT LAYOUT (< 1024px)                                         */}
       {/* ========================================================================= */}
       <div className="lg:hidden w-full flex flex-col justify-start px-4 sm:px-6 pt-16 pointer-events-auto z-20 space-y-3">
         
         {/* Mobile Top Hero Zone */}
         <div className="space-y-2 text-left w-full">
-          {/* Micro Tag Pill (With 2-line vertical gap mb-3.5 below pill) */}
+          {/* Micro Tag Pill */}
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f0ecfc] text-[#58548C] text-[10px] sm:text-xs font-extrabold tracking-wider uppercase shadow-2xs mb-3.5">
             <span className="w-2 h-2 rounded-full bg-[#F27C23]" />
             <span>AI-FIRST. CONTEXT DRIVEN. PRIVACY BY DESIGN</span>
