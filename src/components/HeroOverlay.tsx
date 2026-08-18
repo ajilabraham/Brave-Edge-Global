@@ -12,7 +12,7 @@ import {
 
 export const HeroOverlay: React.FC = () => {
   return (
-    <div className="relative w-full h-full pt-20 pb-4 flex flex-col justify-between pointer-events-none z-10 select-none">
+    <div className="relative w-full h-full pt-16 lg:pt-20 pb-4 flex flex-col justify-between pointer-events-none z-10 select-none">
       
       {/* ========================================================================= */}
       {/* DESKTOP LAYOUT (>= 1024px) — 100% PRESERVED, UNTOUCHED & LOCKED           */}
@@ -169,20 +169,20 @@ export const HeroOverlay: React.FC = () => {
       </div>
 
       {/* ========================================================================= */}
-      {/* MOBILE PORTRAIT LAYOUT (< 1024px) — CLEAN, RESPONSIVE, ZERO OVERLAP      */}
+      {/* MOBILE PORTRAIT LAYOUT (< 1024px) — CLEAN, COMPACT, ZERO OVERLAP          */}
       {/* ========================================================================= */}
-      <div className="lg:hidden w-full h-full flex flex-col justify-between px-4 sm:px-6 pt-20 pb-4 overflow-y-auto pointer-events-auto z-20 space-y-4">
+      <div className="lg:hidden w-full h-full flex flex-col justify-between px-4 sm:px-6 pt-16 pb-2 overflow-y-auto pointer-events-auto z-20 space-y-2.5">
         
         {/* Mobile Top Hero Zone */}
-        <div className="space-y-3.5 text-left max-w-sm">
+        <div className="space-y-2.5 text-left max-w-sm">
           {/* Micro Tag Pill */}
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f0ecfc] text-[#58548C] text-[10px] font-extrabold tracking-wider uppercase shadow-2xs">
+          <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#f0ecfc] text-[#58548C] text-[10px] font-extrabold tracking-wider uppercase shadow-2xs">
             <span className="w-2 h-2 rounded-full bg-[#F27C23]" />
             <span>AI-FIRST. CONTEXT DRIVEN. PRIVACY BY DESIGN</span>
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-3xl sm:text-4xl font-black text-neutral-900 tracking-tight leading-[1.08]">
+          <h1 className="text-3xl sm:text-4xl font-black text-neutral-900 tracking-tight leading-[1.05]">
             Own your
             <span className="block bg-gradient-to-r from-[#F27C23] via-[#E75038] to-[#58548C] bg-clip-text text-transparent font-black mt-0.5">
               Intelligence.
@@ -190,16 +190,16 @@ export const HeroOverlay: React.FC = () => {
           </h1>
 
           {/* 3-Line Copy */}
-          <div className="text-xs sm:text-sm text-neutral-600 font-normal leading-relaxed space-y-0.5">
+          <div className="text-xs sm:text-sm text-neutral-600 font-normal leading-tight space-y-0.5">
             <p>Modernise your digital presence.</p>
             <p>Connect your knowledge.</p>
             <p>Build AI around your context.</p>
           </div>
 
           {/* 2 Value Items */}
-          <div className="grid grid-cols-2 gap-2 pt-1">
+          <div className="grid grid-cols-2 gap-2 pt-0.5">
             <div className="flex items-start gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-[#F27C23] shrink-0 mt-0.5" />
+              <ShieldCheck className="w-3.5 h-3.5 text-[#F27C23] shrink-0 mt-0.5" />
               <div>
                 <h4 className="text-[11px] font-bold text-neutral-900 leading-snug">Your data stays yours</h4>
                 <p className="text-[10px] text-neutral-500 leading-tight">Private & secure.</p>
@@ -207,7 +207,7 @@ export const HeroOverlay: React.FC = () => {
             </div>
 
             <div className="flex items-start gap-1.5">
-              <Cpu className="w-4 h-4 text-[#58548C] shrink-0 mt-0.5" />
+              <Cpu className="w-3.5 h-3.5 text-[#58548C] shrink-0 mt-0.5" />
               <div>
                 <h4 className="text-[11px] font-bold text-neutral-900 leading-snug">AI that understands</h4>
                 <p className="text-[10px] text-neutral-500 leading-tight">Context-aware agents.</p>
@@ -216,10 +216,10 @@ export const HeroOverlay: React.FC = () => {
           </div>
 
           {/* Action CTAs */}
-          <div className="flex flex-col sm:flex-row gap-2.5 pt-1">
+          <div className="flex flex-col sm:flex-row gap-2 pt-0.5">
             <a
               href="#contact"
-              className="inline-flex items-center justify-center gap-2 bg-[#F27C23] text-white px-5 py-2.5 rounded-xl text-xs font-bold shadow-md"
+              className="inline-flex items-center justify-center gap-2 bg-[#F27C23] text-white px-4 py-2.5 rounded-xl text-xs font-bold shadow-md"
             >
               <span>Explore how it works</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -227,7 +227,7 @@ export const HeroOverlay: React.FC = () => {
 
             <a
               href="#use-cases"
-              className="inline-flex items-center justify-center gap-2 bg-white/90 border border-[#58548C]/30 text-[#58548C] px-5 py-2.5 rounded-xl text-xs font-bold shadow-2xs"
+              className="inline-flex items-center justify-center gap-2 bg-white/95 border border-[#58548C]/30 text-[#58548C] px-4 py-2.5 rounded-xl text-xs font-bold shadow-2xs"
             >
               <Play className="w-3 h-3 fill-[#58548C] text-[#58548C]" />
               <span>See real use cases</span>
@@ -236,19 +236,19 @@ export const HeroOverlay: React.FC = () => {
         </div>
 
         {/* Mobile Swipeable 3 Action Cards Carousel */}
-        <div className="w-full pt-2">
-          <p className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 mb-2 text-left">
-            Explore Services & Solutions →
+        <div className="w-full pt-1">
+          <p className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 mb-1 text-left">
+            Services & Solutions →
           </p>
-          <div className="flex overflow-x-auto gap-3 pb-2 snap-x scrollbar-none">
+          <div className="flex overflow-x-auto gap-2.5 pb-1 snap-x scrollbar-none">
             
             {/* Card 1 */}
             <a
               href="#websites"
-              className="snap-start shrink-0 w-[240px] p-3.5 rounded-xl bg-white/95 border border-neutral-200/90 shadow-md flex items-center gap-3"
+              className="snap-start shrink-0 w-[230px] p-3 rounded-xl bg-white/95 border border-neutral-200/90 shadow-md flex items-center gap-2.5"
             >
-              <div className="w-9 h-9 rounded-full bg-[#F27C23] text-white flex items-center justify-center shrink-0">
-                <ArrowUpRight className="w-4 h-4" />
+              <div className="w-8 h-8 rounded-full bg-[#F27C23] text-white flex items-center justify-center shrink-0">
+                <ArrowUpRight className="w-3.5 h-3.5" />
               </div>
               <div className="text-left">
                 <h3 className="text-xs font-bold text-neutral-900">Modern Websites</h3>
@@ -259,10 +259,10 @@ export const HeroOverlay: React.FC = () => {
             {/* Card 2 */}
             <a
               href="#solutions"
-              className="snap-start shrink-0 w-[240px] p-3.5 rounded-xl bg-white/95 border border-neutral-200/90 shadow-md flex items-center gap-3"
+              className="snap-start shrink-0 w-[230px] p-3 rounded-xl bg-white/95 border border-neutral-200/90 shadow-md flex items-center gap-2.5"
             >
-              <div className="w-9 h-9 rounded-full bg-[#58548C] text-white flex items-center justify-center shrink-0">
-                <Box className="w-4 h-4" />
+              <div className="w-8 h-8 rounded-full bg-[#58548C] text-white flex items-center justify-center shrink-0">
+                <Box className="w-3.5 h-3.5" />
               </div>
               <div className="text-left">
                 <h3 className="text-xs font-bold text-neutral-900">AI & Solutions</h3>
@@ -273,10 +273,10 @@ export const HeroOverlay: React.FC = () => {
             {/* Card 3 */}
             <a
               href="#contact"
-              className="snap-start shrink-0 w-[240px] p-3.5 rounded-xl bg-white/95 border border-neutral-200/90 shadow-md flex items-center gap-3"
+              className="snap-start shrink-0 w-[230px] p-3 rounded-xl bg-white/95 border border-neutral-200/90 shadow-md flex items-center gap-2.5"
             >
-              <div className="w-9 h-9 rounded-full bg-white border-2 border-[#F27C23] text-[#F27C23] flex items-center justify-center shrink-0">
-                <Mail className="w-4 h-4" />
+              <div className="w-8 h-8 rounded-full bg-white border-2 border-[#F27C23] text-[#F27C23] flex items-center justify-center shrink-0">
+                <Mail className="w-3.5 h-3.5" />
               </div>
               <div className="text-left">
                 <h3 className="text-xs font-bold text-neutral-900">Talk to an Expert</h3>
@@ -290,8 +290,8 @@ export const HeroOverlay: React.FC = () => {
       </div>
 
       {/* Scroll Cue at Bottom Center */}
-      <div className="w-full flex flex-col items-center justify-center pt-1 pointer-events-auto">
-        <div className="w-7 h-7 rounded-full bg-white border border-neutral-200 shadow-2xs flex items-center justify-center text-neutral-600 animate-bounce mb-0.5">
+      <div className="w-full flex flex-col items-center justify-center pt-0.5 pointer-events-auto">
+        <div className="w-6 h-6 rounded-full bg-white border border-neutral-200 shadow-2xs flex items-center justify-center text-neutral-600 animate-bounce mb-0.5">
           <ArrowDown className="w-3 h-3 text-[#F27C23]" />
         </div>
         <span className="text-[10px] font-medium text-neutral-400">

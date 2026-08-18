@@ -406,6 +406,10 @@ export const CharacterExperience: React.FC<CharacterExperienceProps> = ({ render
           if (displayWidth >= 1024) {
             const heroProgress = Math.min(1.0, scrollProgressRef.current / 0.12);
             scaleFactor = 0.80 + heroProgress * 0.20;
+          } else {
+            // Mobile Hero Mode (< 1024px): Scale character slightly (0.68 -> 1.0) so head sits lower on mobile below CTAs
+            const heroProgress = Math.min(1.0, scrollProgressRef.current / 0.12);
+            scaleFactor = 0.68 + heroProgress * 0.32;
           }
 
           drawWidth *= scaleFactor;
@@ -417,8 +421,8 @@ export const CharacterExperience: React.FC<CharacterExperienceProps> = ({ render
           // Mobile Responsive Offsets (Only applied on mobile < 1024px, preserving desktop >= 1024px 100%)
           if (displayWidth < 1024) {
             const heroProgress = Math.min(1.0, scrollProgressRef.current / 0.12);
-            // In Section 1 (State 1), shift mascot down slightly on mobile so hero text sits in clean top space
-            const heroShiftY = (1 - heroProgress) * (displayHeight * 0.15);
+            // In Section 1 (State 1), shift mascot down on mobile so head starts below CTAs (Y > 55%)
+            const heroShiftY = (1 - heroProgress) * (displayHeight * 0.22);
             // In Section 2 (State 2), shift mascot right on mobile so 01,02,03 text sits on clean left space
             const turnShiftX = heroProgress * (displayWidth * 0.18);
 
