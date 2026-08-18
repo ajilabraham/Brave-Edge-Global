@@ -168,9 +168,9 @@ export const HeroOverlay: React.FC = () => {
       </div>
 
       {/* ========================================================================= */}
-      {/* MOBILE PORTRAIT LAYOUT (< 1024px) — CARDS PULLED HIGH UP & 100% VISIBLE    */}
+      {/* MOBILE PORTRAIT LAYOUT (< 1024px) — CARDS PLACED DIRECTLY BELOW HERO ZONE */}
       {/* ========================================================================= */}
-      <div className="lg:hidden w-full h-full flex flex-col justify-between px-3.5 sm:px-6 pt-12 pb-2 overflow-y-auto pointer-events-auto z-20 space-y-1">
+      <div className="lg:hidden w-full flex flex-col justify-start px-3.5 sm:px-6 pt-12 pointer-events-auto z-20 space-y-2">
         
         {/* Mobile Top Hero Zone */}
         <div className="space-y-1.5 text-left w-full">
@@ -239,15 +239,15 @@ export const HeroOverlay: React.FC = () => {
           </div>
         </div>
 
-        {/* Mobile Visible 3 Action Cards Carousel (Brought UP high to be 100% visible on first load) */}
-        <div className="w-full mt-auto pt-1 pb-2">
+        {/* Mobile Services & Solutions Cards Container — PLACED DIRECTLY BELOW HERO ZONE AT Y ~ 240px */}
+        <div className="w-full pt-1.5">
           <p className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider text-neutral-600 mb-1 text-left flex items-center gap-1">
             <span>Services & Solutions</span>
             <ArrowRight className="w-3 h-3 text-[#F27C23]" />
           </p>
-          <div className="flex overflow-x-auto gap-2 pb-0.5 snap-x scrollbar-none">
+          <div className="flex overflow-x-auto gap-2 pb-1 snap-x scrollbar-none">
             
-            {/* Card 1 */}
+            {/* Card 1: Modern Websites */}
             <a
               href="#websites"
               className="snap-start shrink-0 w-[205px] p-2.5 rounded-xl bg-white/95 border border-neutral-200/90 shadow-md flex items-center gap-2.5"
@@ -261,7 +261,7 @@ export const HeroOverlay: React.FC = () => {
               </div>
             </a>
 
-            {/* Card 2 */}
+            {/* Card 2: AI & Solutions */}
             <a
               href="#solutions"
               className="snap-start shrink-0 w-[205px] p-2.5 rounded-xl bg-white/95 border border-neutral-200/90 shadow-md flex items-center gap-2.5"
@@ -275,7 +275,7 @@ export const HeroOverlay: React.FC = () => {
               </div>
             </a>
 
-            {/* Card 3 */}
+            {/* Card 3: Talk to an Expert */}
             <a
               href="#contact"
               className="snap-start shrink-0 w-[205px] p-2.5 rounded-xl bg-white/95 border border-neutral-200/90 shadow-md flex items-center gap-2.5"
