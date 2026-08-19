@@ -6,11 +6,11 @@ interface Section2ScrollNarrativeProps {
 }
 
 export const Section2ScrollNarrative: React.FC<Section2ScrollNarrativeProps> = ({ scrollProgress }) => {
-  // Normalize progress for Section 2 (from scrollProgress ~0.12 to 0.85)
-  const normProgress = Math.min(1.0, Math.max(0.0, (scrollProgress - 0.12) / 0.73));
+  // Normalize progress for Section 2 stepper reveal (from scrollProgress ~0.12 to 0.75)
+  const normProgress = Math.min(1.0, Math.max(0.0, (scrollProgress - 0.12) / 0.63));
 
-  // Exit fade-out calculation upon further scroll past final state (scrollProgress 0.85 to 0.98)
-  const fadeOutProgress = Math.min(1.0, Math.max(0.0, (scrollProgress - 0.85) / 0.13));
+  // Exit fade-out calculation upon further scroll past final state (scrollProgress 0.75 to 0.95)
+  const fadeOutProgress = Math.min(1.0, Math.max(0.0, (scrollProgress - 0.75) / 0.20));
   const exitOpacity = 1 - fadeOutProgress;
 
   // Determine active step index for the moving flashing pulse indicator

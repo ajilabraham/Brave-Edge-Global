@@ -150,8 +150,9 @@ export const CharacterExperience: React.FC<CharacterExperienceProps> = ({ render
       scrollProgressRef.current = progress;
       setScrollProgressState(progress);
 
-      // Target frame in 121-frame scroll-turn sequence
-      targetTurnFrameRef.current = Math.min(120, Math.max(0, Math.round(progress * 120)));
+      // Target frame in 121-frame scroll-turn sequence (mapped to 0.12 - 0.75 progress)
+      const turnProgress = Math.min(1.0, Math.max(0.0, (progress - 0.12) / 0.63));
+      targetTurnFrameRef.current = Math.min(120, Math.max(0, Math.round(turnProgress * 120)));
 
       // STATE 1 -> STATE 2 HANDOFF CONTROLLER
       if (scrolledDistance > 8) {
@@ -366,6 +367,15 @@ export const CharacterExperience: React.FC<CharacterExperienceProps> = ({ render
         stickyStageRef.current.style.backgroundColor = currentBgHex;
       }
 
+      // Calculate exit fade-out opacity upon further scroll past final Segment 2 state (progress 0.75 to 0.95)
+      const fadeOutProgress = Math.min(1.0, Math.max(0.0, (scrollProgressRef.current - 0.75) / 0.20));
+      const exitOpacity = 1 - fadeOutProgress;
+
+      // Update Canvas DOM opacity directly for guaranteed visual fade-out of character mascot
+      if (canvasRef.current) {
+        canvasRef.current.style.opacity = String(exitOpacity);
+      }
+
       // Render active frame to Canvas with exact background fill & responsive scale
       const canvas = canvasRef.current;
       if (canvas && activeImage && activeImage.complete) {
@@ -430,10 +440,6 @@ export const CharacterExperience: React.FC<CharacterExperienceProps> = ({ render
             offsetX += turnShiftX;
           }
 
-          // Exit fade-out calculation upon further scroll past Segment 2 final state (scrollProgress 0.85 to 0.98)
-          const fadeOutProgress = Math.min(1.0, Math.max(0.0, (scrollProgressRef.current - 0.85) / 0.13));
-          const exitOpacity = 1 - fadeOutProgress;
-
           ctx.globalAlpha = exitOpacity;
           ctx.drawImage(activeImage, offsetX, offsetY, drawWidth, drawHeight);
           ctx.globalAlpha = 1.0;
@@ -478,7 +484,7 @@ export const CharacterExperience: React.FC<CharacterExperienceProps> = ({ render
       {/* Sticky Viewport Stage: Pinned to top:0 during 300vh scroll */}
       <div ref={stickyStageRef} className="sticky top-0 left-0 w-full h-screen overflow-hidden flex items-center justify-center bg-[#f6f5f8]">
         {/* Fullscreen Canvas Render Surface */}
-        <canvas ref={canvasRef} className="w-full h-full block" />
+        <canvas ref={canvasRef} className="w-full h-full block transition-opacity duration-150 ease-out" />
 
         {/* Render Overlay (Hero Left Content & Section 2 Scroll Narrative) */}
         {renderOverlay && renderOverlay(scrollProgressState)}
