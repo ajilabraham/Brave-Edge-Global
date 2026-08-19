@@ -430,7 +430,13 @@ export const CharacterExperience: React.FC<CharacterExperienceProps> = ({ render
             offsetX += turnShiftX;
           }
 
+          // Exit fade-out calculation upon further scroll past Segment 2 final state (scrollProgress 0.85 to 0.98)
+          const fadeOutProgress = Math.min(1.0, Math.max(0.0, (scrollProgressRef.current - 0.85) / 0.13));
+          const exitOpacity = 1 - fadeOutProgress;
+
+          ctx.globalAlpha = exitOpacity;
           ctx.drawImage(activeImage, offsetX, offsetY, drawWidth, drawHeight);
+          ctx.globalAlpha = 1.0;
           ctx.restore();
         }
       }

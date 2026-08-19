@@ -6,8 +6,12 @@ interface Section2ScrollNarrativeProps {
 }
 
 export const Section2ScrollNarrative: React.FC<Section2ScrollNarrativeProps> = ({ scrollProgress }) => {
-  // Normalize progress for Section 2 (from scrollProgress ~0.12 to 0.95)
-  const normProgress = Math.min(1.0, Math.max(0.0, (scrollProgress - 0.12) / 0.80));
+  // Normalize progress for Section 2 (from scrollProgress ~0.12 to 0.85)
+  const normProgress = Math.min(1.0, Math.max(0.0, (scrollProgress - 0.12) / 0.73));
+
+  // Exit fade-out calculation upon further scroll past final state (scrollProgress 0.85 to 0.98)
+  const fadeOutProgress = Math.min(1.0, Math.max(0.0, (scrollProgress - 0.85) / 0.13));
+  const exitOpacity = 1 - fadeOutProgress;
 
   // Determine active step index for the moving flashing pulse indicator
   // 1: Step 01 active (0.0 to 0.33)
@@ -17,22 +21,22 @@ export const Section2ScrollNarrative: React.FC<Section2ScrollNarrativeProps> = (
 
   // Node 1 Step (Fades in & slides up from 0.02 to 0.22)
   const step1T = Math.min(1.0, Math.max(0.0, (normProgress - 0.02) / 0.22));
-  const step1Opacity = step1T;
+  const step1Opacity = step1T * exitOpacity;
   const step1Y = (1 - step1T) * 20;
 
   // Node 2 Step (Fades in & slides up from 0.28 to 0.48)
   const step2T = Math.min(1.0, Math.max(0.0, (normProgress - 0.28) / 0.22));
-  const step2Opacity = step2T;
+  const step2Opacity = step2T * exitOpacity;
   const step2Y = (1 - step2T) * 20;
 
   // Node 3 Step (Fades in & slides up from 0.54 to 0.76)
   const step3T = Math.min(1.0, Math.max(0.0, (normProgress - 0.54) / 0.22));
-  const step3Opacity = step3T;
+  const step3Opacity = step3T * exitOpacity;
   const step3Y = (1 - step3T) * 20;
 
   // Talk to Leo Button Visibility (Appears ONLY after 3rd point is visible towards end of scroll)
   const leoT = Math.min(1.0, Math.max(0.0, (normProgress - 0.62) / 0.20));
-  const leoOpacity = leoT;
+  const leoOpacity = leoT * exitOpacity;
   const leoScale = 0.9 + leoT * 0.1;
   const leoY = (1 - leoT) * 12;
 
@@ -40,7 +44,10 @@ export const Section2ScrollNarrative: React.FC<Section2ScrollNarrativeProps> = (
   const lineFillPercent = Math.min(100, Math.max(0, normProgress * 100));
 
   return (
-    <div className="absolute inset-0 z-20 pointer-events-none flex items-center justify-start select-none">
+    <div
+      className="absolute inset-0 z-20 pointer-events-none flex items-center justify-start select-none transition-opacity duration-150 ease-out"
+      style={{ opacity: exitOpacity }}
+    >
       <div className="max-w-[1720px] w-full mx-auto px-4 sm:px-10 lg:px-14 relative h-full flex items-center">
         
         {/* LEFT COLUMN: Stepper Narrative Container */}
