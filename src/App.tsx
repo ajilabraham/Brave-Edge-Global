@@ -41,6 +41,14 @@ export function App() {
           }}
         />
       </main>
+
+      {/* Anam AI Agent Floating Widget in predefined position (bottom-right) */}
+      <anam-agent
+        agent-id="4739925f-7639-5e7f-b491-afda3624f215"
+        layout="floating"
+        position="bottom-right"
+        initial-state="minimized"
+      ></anam-agent>
     </div>
   );
 }
