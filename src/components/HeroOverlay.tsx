@@ -48,11 +48,11 @@ export const HeroOverlay: React.FC = () => {
                 <ShieldCheck className="w-5 h-5 stroke-[1.75]" />
               </div>
               <div>
-                <h4 className="text-xs sm:text-sm font-bold text-neutral-900 leading-snug">
-                  Your data stays yours
+                <h4 className="text-xs sm:text-sm font-bold text-neutral-900 leading-snug uppercase">
+                  YOUR BUSINESS, UNDERSTOOD
                 </h4>
                 <p className="text-xs text-neutral-500 leading-tight mt-0.5">
-                  Private & secure under control.
+                  AI that connects your knowledge, data and context with your website.
                 </p>
               </div>
             </div>
@@ -63,11 +63,11 @@ export const HeroOverlay: React.FC = () => {
                 <Cpu className="w-5 h-5 stroke-[1.75]" />
               </div>
               <div>
-                <h4 className="text-xs sm:text-sm font-bold text-neutral-900 leading-snug">
-                  AI that understands
+                <h4 className="text-xs sm:text-sm font-bold text-neutral-900 leading-snug uppercase">
+                  YOUR AUDIENCE, UNDERSTOOD
                 </h4>
                 <p className="text-xs text-neutral-500 leading-tight mt-0.5">
-                  Context-aware business agents.
+                  Web experiences that recognise your visitors intent and respond intelligently.
                 </p>
               </div>
             </div>
@@ -221,16 +221,16 @@ export const HeroOverlay: React.FC = () => {
             <div className="flex items-start gap-1.5">
               <ShieldCheck className="w-3.5 h-3.5 text-[#F27C23] shrink-0 mt-0.5" />
               <div>
-                <h4 className="text-[10px] sm:text-xs font-bold text-neutral-900 leading-snug">Your data stays yours</h4>
-                <p className="text-[9px] sm:text-[10px] text-neutral-500 leading-tight">Private & secure.</p>
+                <h4 className="text-[10px] sm:text-xs font-bold text-neutral-900 leading-snug uppercase">YOUR BUSINESS, UNDERSTOOD</h4>
+                <p className="text-[9px] sm:text-[10px] text-neutral-500 leading-tight">AI that connects your knowledge, data and context with your website.</p>
               </div>
             </div>
 
             <div className="flex items-start gap-1.5">
               <Cpu className="w-3.5 h-3.5 text-[#58548C] shrink-0 mt-0.5" />
               <div>
-                <h4 className="text-[10px] sm:text-xs font-bold text-neutral-900 leading-snug">AI that understands</h4>
-                <p className="text-[9px] sm:text-[10px] text-neutral-500 leading-tight">Context-aware agents.</p>
+                <h4 className="text-[10px] sm:text-xs font-bold text-neutral-900 leading-snug uppercase">YOUR AUDIENCE, UNDERSTOOD</h4>
+                <p className="text-[9px] sm:text-[10px] text-neutral-500 leading-tight">Web experiences that recognise your visitors intent and respond intelligently.</p>
               </div>
             </div>
           </div>
