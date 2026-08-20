@@ -195,6 +195,8 @@ export const Section2ScrollNarrative: React.FC<Section2ScrollNarrativeProps> = (
               <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#F27C23] group-hover:translate-x-0.5 transition-transform" />
             </a>
           </div>
+        )}
+
         {/* Predefined Position Anam Agent Widget at Section 2 fade-out */}
         {fadeOutProgress > 0 && (
           <div className="pointer-events-auto">
