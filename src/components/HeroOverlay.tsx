@@ -24,7 +24,7 @@ export const HeroOverlay: React.FC = () => {
           {/* Micro Tag Pill */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#f0ecfc] text-[#58548C] text-xs font-extrabold tracking-wider uppercase shadow-2xs">
             <span className="w-2.5 h-2.5 rounded-full bg-[#F27C23]" />
-            <span>AI-FIRST. CONTEXT DRIVEN. PRIVACY BY DESIGN</span>
+            <span>YOU VISITED. IT NOTICED. NOW IT'S YOUR TURN</span>
           </div>
 
           {/* Grand Main Headline */}
@@ -178,7 +178,7 @@ export const HeroOverlay: React.FC = () => {
           {/* Micro Tag Pill */}
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f0ecfc] text-[#58548C] text-[10px] sm:text-xs font-extrabold tracking-wider uppercase shadow-2xs mb-3.5">
             <span className="w-2 h-2 rounded-full bg-[#F27C23]" />
-            <span>AI-FIRST. CONTEXT DRIVEN. PRIVACY BY DESIGN</span>
+            <span>YOU VISITED. IT NOTICED. NOW IT'S YOUR TURN</span>
           </div>
 
           {/* 2-Column Mobile Grid: Left Headline & Subtext | Right CTAs */}
