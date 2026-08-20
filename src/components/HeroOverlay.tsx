@@ -7,7 +7,7 @@ import {
   Cpu,
   ArrowDown,
   Box,
-  Mail
+  Network
 } from 'lucide-react';
 
 export const HeroOverlay: React.FC = () => {
@@ -146,7 +146,7 @@ export const HeroOverlay: React.FC = () => {
           >
             <div className="flex items-center gap-4">
               <div className="w-11 h-11 rounded-full bg-white border-2 border-[#F27C23] text-[#F27C23] flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
-                <Mail className="w-5 h-5 stroke-[2]" />
+                <Network className="w-5 h-5 stroke-[2]" />
               </div>
               <div>
                 <h3 className="text-sm font-bold text-neutral-900 group-hover:text-[#F27C23] transition-colors leading-snug uppercase tracking-wide">
@@ -275,7 +275,7 @@ export const HeroOverlay: React.FC = () => {
               className="snap-start shrink-0 w-[205px] p-2.5 rounded-xl bg-white/95 border border-neutral-200/90 shadow-md flex items-center gap-2.5"
             >
               <div className="w-7.5 h-7.5 rounded-full bg-white border-2 border-[#F27C23] text-[#F27C23] flex items-center justify-center shrink-0 shadow-xs">
-                <Mail className="w-3.5 h-3.5 stroke-[2]" />
+                <Network className="w-3.5 h-3.5 stroke-[2]" />
               </div>
               <div className="text-left">
                 <h3 className="text-[11px] sm:text-xs font-bold text-neutral-900 uppercase">Connected Ecosystems</h3>
