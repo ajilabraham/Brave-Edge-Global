@@ -36,10 +36,8 @@ export const HeroOverlay: React.FC = () => {
           </h1>
 
           {/* Supporting Copy */}
-          <div className="text-base sm:text-lg text-neutral-600 font-normal leading-relaxed space-y-1 max-w-md">
-            <p>Modernise your digital presence.</p>
-            <p>Connect your knowledge.</p>
-            <p>Build AI around your context.</p>
+          <div className="text-base sm:text-lg text-neutral-600 font-normal leading-relaxed max-w-md">
+            <p>Turn your website into an intelligent digital experience built around your business, your knowledge and your audience.</p>
           </div>
 
           {/* 2 Horizontal Side-by-Side Value Items */}
@@ -192,10 +190,8 @@ export const HeroOverlay: React.FC = () => {
                   Intelligence.
                 </span>
               </h1>
-              <div className="text-[11px] sm:text-xs text-neutral-600 font-normal leading-tight space-y-0.5">
-                <p>Modernise your digital presence.</p>
-                <p>Connect your knowledge.</p>
-                <p>Build AI around your context.</p>
+              <div className="text-[11px] sm:text-xs text-neutral-600 font-normal leading-tight">
+                <p>Turn your website into an intelligent digital experience built around your business, your knowledge and your audience.</p>
               </div>
             </div>
 
