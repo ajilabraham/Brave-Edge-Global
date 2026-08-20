@@ -33,9 +33,10 @@ const ANCHOR_POINTS: [number, number][] = [
 
 interface CharacterExperienceProps {
   renderOverlay?: (scrollProgress: number) => React.ReactNode;
+  onScrollProgress?: (scrollProgress: number) => void;
 }
 
-export const CharacterExperience: React.FC<CharacterExperienceProps> = ({ renderOverlay }) => {
+export const CharacterExperience: React.FC<CharacterExperienceProps> = ({ renderOverlay, onScrollProgress }) => {
   const containerRef = useRef<HTMLElement | null>(null);
   const stickyStageRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -149,6 +150,9 @@ export const CharacterExperience: React.FC<CharacterExperienceProps> = ({ render
       const progress = Math.min(1.0, Math.max(0.0, scrolledDistance / maxScrollable));
       scrollProgressRef.current = progress;
       setScrollProgressState(progress);
+      if (onScrollProgress) {
+        onScrollProgress(progress);
+      }
 
       // Target frame in 121-frame scroll-turn sequence (mapped to 0.12 - 0.75 progress)
       const turnProgress = Math.min(1.0, Math.max(0.0, (progress - 0.12) / 0.63));
