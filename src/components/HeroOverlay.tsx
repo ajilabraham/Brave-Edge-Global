@@ -94,12 +94,10 @@ export const HeroOverlay: React.FC = () => {
         </div>
 
         {/* CENTER COLUMN: Protected Empty Visual Zone for Character Mascot (Cols 6-8) */}
-        <div className="hidden lg:block lg:col-span-3 xl:col-span-3 h-full pointer-events-none" />
-
-        {/* RIGHT COLUMN: 3 Stacked Action Blurb Cards (Cols 9-12) */}
+        <div className="hidden lg:block lg:col-span-3 xl:col-span-3 h-full pointer-events-none" />        {/* RIGHT COLUMN: 3 Stacked Action Blurb Cards (Cols 9-12) */}
         <div className="lg:col-span-4 xl:col-span-4 space-y-4 pointer-events-auto z-20 max-w-sm lg:ml-auto w-full">
           
-          {/* Card 1: Modern Websites */}
+          {/* Card 1: Intelligent Websites */}
           <a
             href="#websites"
             className="group p-5 rounded-2xl bg-white border border-neutral-100/90 shadow-md shadow-neutral-200/40 hover:shadow-xl hover:border-orange-200 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-between gap-4 block"
@@ -109,18 +107,18 @@ export const HeroOverlay: React.FC = () => {
                 <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-neutral-900 group-hover:text-[#F27C23] transition-colors leading-snug">
-                  Modern Websites
+                <h3 className="text-sm font-bold text-neutral-900 group-hover:text-[#F27C23] transition-colors leading-snug uppercase tracking-wide">
+                  Intelligent Websites
                 </h3>
                 <p className="text-xs text-neutral-500 leading-normal mt-0.5">
-                  High-performance corporate websites that convert.
+                  Websites that can understand who is here and what they need.
                 </p>
               </div>
             </div>
             <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-[#F27C23] group-hover:translate-x-1 transition-all shrink-0" />
           </a>
 
-          {/* Card 2: AI & Solutions */}
+          {/* Card 2: Contextual AI */}
           <a
             href="#solutions"
             className="group p-5 rounded-2xl bg-white border border-neutral-100/90 shadow-md shadow-neutral-200/40 hover:shadow-xl hover:border-purple-200 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-between gap-4 block"
@@ -130,18 +128,18 @@ export const HeroOverlay: React.FC = () => {
                 <Box className="w-5 h-5 stroke-[2]" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-neutral-900 group-hover:text-[#58548C] transition-colors leading-snug">
-                  AI & Solutions
+                <h3 className="text-sm font-bold text-neutral-900 group-hover:text-[#58548C] transition-colors leading-snug uppercase tracking-wide">
+                  Contextual AI
                 </h3>
                 <p className="text-xs text-neutral-500 leading-normal mt-0.5">
-                  Contextual AI solutions built around your business.
+                  Turns your business knowledge into useful AI for your website.
                 </p>
               </div>
             </div>
             <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-[#58548C] group-hover:translate-x-1 transition-all shrink-0" />
           </a>
 
-          {/* Card 3: Talk to an Expert */}
+          {/* Card 3: Connected Ecosystems */}
           <a
             href="#contact"
             className="group p-5 rounded-2xl bg-white border border-neutral-100/90 shadow-md shadow-neutral-200/40 hover:shadow-xl hover:border-orange-200 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-between gap-4 block"
@@ -151,17 +149,16 @@ export const HeroOverlay: React.FC = () => {
                 <Mail className="w-5 h-5 stroke-[2]" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-neutral-900 group-hover:text-[#F27C23] transition-colors leading-snug">
-                  Talk to an Expert
+                <h3 className="text-sm font-bold text-neutral-900 group-hover:text-[#F27C23] transition-colors leading-snug uppercase tracking-wide">
+                  Connected Ecosystems
                 </h3>
                 <p className="text-xs text-neutral-500 leading-normal mt-0.5">
-                  Let's discuss your goals and opportunities.
+                  Connects your website to the systems behind your business.
                 </p>
               </div>
             </div>
             <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-[#F27C23] group-hover:translate-x-1 transition-all shrink-0" />
           </a>
-
         </div>
 
       </div>
@@ -244,7 +241,7 @@ export const HeroOverlay: React.FC = () => {
           </p>
           <div className="flex overflow-x-auto gap-2.5 pb-1 snap-x scrollbar-none">
             
-            {/* Card 1: Modern Websites */}
+            {/* Card 1: Intelligent Websites */}
             <a
               href="#websites"
               className="snap-start shrink-0 w-[205px] p-2.5 rounded-xl bg-white/95 border border-neutral-200/90 shadow-md flex items-center gap-2.5"
@@ -253,12 +250,12 @@ export const HeroOverlay: React.FC = () => {
                 <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
               </div>
               <div className="text-left">
-                <h3 className="text-[11px] sm:text-xs font-bold text-neutral-900">Modern Websites</h3>
-                <p className="text-[9px] sm:text-[10px] text-neutral-500 truncate">Corporate sites that convert.</p>
+                <h3 className="text-[11px] sm:text-xs font-bold text-neutral-900 uppercase">Intelligent Websites</h3>
+                <p className="text-[9px] sm:text-[10px] text-neutral-500 truncate">Websites that can understand who is here and what they need.</p>
               </div>
             </a>
 
-            {/* Card 2: AI & Solutions */}
+            {/* Card 2: Contextual AI */}
             <a
               href="#solutions"
               className="snap-start shrink-0 w-[205px] p-2.5 rounded-xl bg-white/95 border border-neutral-200/90 shadow-md flex items-center gap-2.5"
@@ -267,12 +264,12 @@ export const HeroOverlay: React.FC = () => {
                 <Box className="w-3.5 h-3.5 stroke-[2]" />
               </div>
               <div className="text-left">
-                <h3 className="text-[11px] sm:text-xs font-bold text-neutral-900">AI & Solutions</h3>
-                <p className="text-[9px] sm:text-[10px] text-neutral-500 truncate">Contextual AI for business.</p>
+                <h3 className="text-[11px] sm:text-xs font-bold text-neutral-900 uppercase">Contextual AI</h3>
+                <p className="text-[9px] sm:text-[10px] text-neutral-500 truncate">Turns your business knowledge into useful AI for your website.</p>
               </div>
             </a>
 
-            {/* Card 3: Talk to an Expert */}
+            {/* Card 3: Connected Ecosystems */}
             <a
               href="#contact"
               className="snap-start shrink-0 w-[205px] p-2.5 rounded-xl bg-white/95 border border-neutral-200/90 shadow-md flex items-center gap-2.5"
@@ -281,8 +278,8 @@ export const HeroOverlay: React.FC = () => {
                 <Mail className="w-3.5 h-3.5 stroke-[2]" />
               </div>
               <div className="text-left">
-                <h3 className="text-[11px] sm:text-xs font-bold text-neutral-900">Talk to an Expert</h3>
-                <p className="text-[9px] sm:text-[10px] text-neutral-500 truncate">Discuss your AI goals.</p>
+                <h3 className="text-[11px] sm:text-xs font-bold text-neutral-900 uppercase">Connected Ecosystems</h3>
+                <p className="text-[9px] sm:text-[10px] text-neutral-500 truncate">Connects your website to the systems behind your business.</p>
               </div>
             </a>
 
