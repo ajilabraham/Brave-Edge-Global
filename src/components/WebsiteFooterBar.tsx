@@ -4,7 +4,7 @@ import { ArrowUpRight } from 'lucide-react';
 export const WebsiteFooterBar: React.FC = () => {
   return (
     <div className="w-full bg-white/90 hover:bg-white/95 backdrop-blur-xl border-t border-neutral-200/80 shadow-[0_-4px_20px_rgba(0,0,0,0.03)] transition-all duration-300">
-      <div className="max-w-[1720px] w-full mx-auto px-4 sm:px-10 lg:px-14 py-3 sm:py-3.5 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs font-medium text-neutral-600">
+      <div className="max-w-[1720px] w-full mx-auto px-4 sm:px-10 lg:px-14 py-4 sm:py-4.5 lg:py-5 flex flex-col sm:flex-row items-center justify-between gap-3.5 sm:gap-4 text-xs font-medium text-neutral-600 min-h-[60px] sm:min-h-[64px]">
         
         {/* LEFT: Brand Info & Copyright */}
         <div className="flex items-center gap-2.5">
