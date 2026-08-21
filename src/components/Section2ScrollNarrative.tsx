@@ -1,5 +1,6 @@
 import React from 'react';
 import { Database, Layers, Workflow, Sparkles, Network } from 'lucide-react';
+import { WebsiteFooterBar } from './WebsiteFooterBar';
 
 interface Section2ScrollNarrativeProps {
   scrollProgress: number; // Overall scroll progress (0.0 to 1.0)
@@ -311,6 +312,11 @@ export const Section2ScrollNarrative: React.FC<Section2ScrollNarrativeProps> = (
 
         </div>
 
+      </div>
+
+      {/* BOTTOM WEBSITE FOOTER BAR: Placed in the marked red area */}
+      <div className="absolute bottom-0 inset-x-0 z-30 pointer-events-auto">
+        <WebsiteFooterBar />
       </div>
     </div>
   );
