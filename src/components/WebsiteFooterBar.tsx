@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { Sparkles, ArrowRight } from 'lucide-react';
 
 export const WebsiteFooterBar: React.FC = () => {
   return (
@@ -17,25 +17,19 @@ export const WebsiteFooterBar: React.FC = () => {
           </span>
         </div>
 
-        {/* CENTER: Clean Minimalist Nav Links */}
-        <div className="flex items-center gap-4 sm:gap-6 text-[11px] sm:text-xs">
+        {/* CENTER: Navigation Links */}
+        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-[11px] sm:text-xs">
           <a
-            href="#services"
+            href="#contact"
             className="hover:text-[#F27C23] transition-colors font-semibold text-neutral-700 hover:scale-105 transform duration-200"
           >
-            Services
+            Contact Us
           </a>
           <a
-            href="#solutions"
+            href="#vendor-signup"
             className="hover:text-[#58548C] transition-colors font-semibold text-neutral-700 hover:scale-105 transform duration-200"
           >
-            Solutions
-          </a>
-          <a
-            href="#use-cases"
-            className="hover:text-[#F27C23] transition-colors font-semibold text-neutral-700 hover:scale-105 transform duration-200"
-          >
-            Use Cases
+            Signup as a Brave Edge Vendor
           </a>
           <a
             href="#resources"
@@ -51,21 +45,20 @@ export const WebsiteFooterBar: React.FC = () => {
           </a>
         </div>
 
-        {/* RIGHT: Live System Indicator & Fast Contact */}
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-1.5 bg-neutral-100/90 px-2.5 py-0.5 sm:py-1 rounded-full border border-neutral-200/70 shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-[10px] sm:text-[11px] font-bold text-neutral-700 uppercase tracking-wider">
-              Contextual AI Live
-            </span>
-          </div>
-
+        {/* RIGHT: Talk to Leo Badge */}
+        <div className="flex items-center">
           <a
-            href="#contact"
-            className="group inline-flex items-center gap-1 px-3 py-1 sm:py-1.5 rounded-full bg-[#F27C23]/10 hover:bg-[#F27C23] text-[#F27C23] hover:text-white text-[11px] sm:text-xs font-bold transition-all duration-300 transform hover:-translate-y-0.5 shadow-xs"
+            href="#chat-leo"
+            className="group inline-flex items-center gap-2 px-3 py-1 sm:py-1.5 rounded-full bg-white/95 hover:bg-white border border-orange-200/90 hover:border-[#F27C23] text-neutral-800 hover:text-[#F27C23] transition-all duration-300 shadow-xs hover:shadow-md transform hover:-translate-y-0.5"
           >
-            <span>Talk to an Expert</span>
-            <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <div className="relative w-4 h-4 rounded-full bg-gradient-to-tr from-[#F27C23] to-[#EB893D] text-white flex items-center justify-center shrink-0 shadow-2xs">
+              <Sparkles className="w-2.5 h-2.5 fill-white text-white group-hover:rotate-12 transition-transform" />
+              <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-emerald-400 border border-white animate-pulse" />
+            </div>
+            <span className="text-[11px] sm:text-xs font-bold tracking-wide">
+              Talk to Leo
+            </span>
+            <ArrowRight className="w-3 h-3 text-[#F27C23] group-hover:translate-x-0.5 transition-transform" />
           </a>
         </div>
 
