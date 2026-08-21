@@ -371,15 +371,6 @@ export const CharacterExperience: React.FC<CharacterExperienceProps> = ({ render
         stickyStageRef.current.style.backgroundColor = currentBgHex;
       }
 
-      // Calculate exit fade-out opacity upon further scroll past final Segment 2 state (progress 0.75 to 0.95)
-      const fadeOutProgress = Math.min(1.0, Math.max(0.0, (scrollProgressRef.current - 0.75) / 0.20));
-      const exitOpacity = 1 - fadeOutProgress;
-
-      // Update Canvas DOM opacity directly for guaranteed visual fade-out of character mascot
-      if (canvasRef.current) {
-        canvasRef.current.style.opacity = String(exitOpacity);
-      }
-
       // Render active frame to Canvas with exact background fill & responsive scale
       const canvas = canvasRef.current;
       if (canvas && activeImage && activeImage.complete) {
@@ -444,9 +435,7 @@ export const CharacterExperience: React.FC<CharacterExperienceProps> = ({ render
             offsetX += turnShiftX;
           }
 
-          ctx.globalAlpha = exitOpacity;
           ctx.drawImage(activeImage, offsetX, offsetY, drawWidth, drawHeight);
-          ctx.globalAlpha = 1.0;
           ctx.restore();
         }
       }

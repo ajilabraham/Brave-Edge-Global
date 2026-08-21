@@ -10,10 +10,6 @@ export const Section2ScrollNarrative: React.FC<Section2ScrollNarrativeProps> = (
   // Normalize progress for Section 2 stepper reveal (from scrollProgress ~0.12 to 0.75)
   const normProgress = Math.min(1.0, Math.max(0.0, (scrollProgress - 0.12) / 0.63));
 
-  // Exit fade-out calculation upon further scroll past final state (scrollProgress 0.75 to 0.95)
-  const fadeOutProgress = Math.min(1.0, Math.max(0.0, (scrollProgress - 0.75) / 0.20));
-  const exitOpacity = 1 - fadeOutProgress;
-
   // Determine active step index for the moving flashing pulse indicator
   // 1: Step 01 active (0.0 to 0.33)
   // 2: Step 02 active (0.33 to 0.66)
@@ -22,17 +18,17 @@ export const Section2ScrollNarrative: React.FC<Section2ScrollNarrativeProps> = (
 
   // Node 1 Step (Fades in & slides up from 0.02 to 0.22)
   const step1T = Math.min(1.0, Math.max(0.0, (normProgress - 0.02) / 0.22));
-  const step1Opacity = step1T * exitOpacity;
+  const step1Opacity = step1T;
   const step1Y = (1 - step1T) * 20;
 
   // Node 2 Step (Fades in & slides up from 0.28 to 0.48)
   const step2T = Math.min(1.0, Math.max(0.0, (normProgress - 0.28) / 0.22));
-  const step2Opacity = step2T * exitOpacity;
+  const step2Opacity = step2T;
   const step2Y = (1 - step2T) * 20;
 
   // Node 3 Step (Fades in & slides up from 0.54 to 0.76)
   const step3T = Math.min(1.0, Math.max(0.0, (normProgress - 0.54) / 0.22));
-  const step3Opacity = step3T * exitOpacity;
+  const step3Opacity = step3T;
   const step3Y = (1 - step3T) * 20;
 
   // Easing helper for sophisticated smooth entrance choreography
@@ -41,21 +37,21 @@ export const Section2ScrollNarrative: React.FC<Section2ScrollNarrativeProps> = (
   // Right Stacked Cards Reveal (Cascading entrance with 3D depth, scale, and lateral glide)
   const rawCard1T = Math.min(1.0, Math.max(0.0, (normProgress - 0.35) / 0.22));
   const card1T = easeOutCubic(rawCard1T);
-  const card1Opacity = card1T * exitOpacity;
+  const card1Opacity = card1T;
   const card1Y = (1 - card1T) * 18;
   const card1X = (1 - card1T) * 14;
   const card1Scale = 0.93 + card1T * 0.07;
 
   const rawCard2T = Math.min(1.0, Math.max(0.0, (normProgress - 0.48) / 0.22));
   const card2T = easeOutCubic(rawCard2T);
-  const card2Opacity = card2T * exitOpacity;
+  const card2Opacity = card2T;
   const card2Y = (1 - card2T) * 18;
   const card2X = (1 - card2T) * 14;
   const card2Scale = 0.93 + card2T * 0.07;
 
   const rawCard3T = Math.min(1.0, Math.max(0.0, (normProgress - 0.60) / 0.22));
   const card3T = easeOutCubic(rawCard3T);
-  const card3Opacity = card3T * exitOpacity;
+  const card3Opacity = card3T;
   const card3Y = (1 - card3T) * 18;
   const card3X = (1 - card3T) * 14;
   const card3Scale = 0.93 + card3T * 0.07;
@@ -64,10 +60,7 @@ export const Section2ScrollNarrative: React.FC<Section2ScrollNarrativeProps> = (
   const lineFillPercent = Math.min(100, Math.max(0, normProgress * 100));
 
   return (
-    <div
-      className="absolute inset-0 z-20 pointer-events-none flex items-center justify-start select-none transition-opacity duration-150 ease-out"
-      style={{ opacity: exitOpacity }}
-    >
+    <div className="absolute inset-0 z-20 pointer-events-none flex items-center justify-start select-none">
       <div className="max-w-[1720px] w-full mx-auto px-4 sm:px-10 lg:px-14 relative h-full flex items-center justify-between">
         
         {/* LEFT COLUMN: Stepper Narrative Container */}
