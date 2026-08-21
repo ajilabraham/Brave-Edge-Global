@@ -18,25 +18,32 @@ export const WebsiteFooterBar: React.FC = () => {
         </div>
 
         {/* CENTER: Navigation Links */}
-        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-[11px] sm:text-xs">
-          <a
-            href="#contact"
-            className="hover:text-[#F27C23] transition-colors font-semibold text-neutral-700 hover:scale-105 transform duration-200"
-          >
-            Contact Us
-          </a>
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5 text-[11px] sm:text-xs">
+          {/* 1. Signup as Brave Edge Vendor (Distinct Pill Style) */}
           <a
             href="#vendor-signup"
-            className="hover:text-[#58548C] transition-colors font-semibold text-neutral-700 hover:scale-105 transform duration-200"
+            className="group inline-flex items-center gap-1.5 px-3 py-0.5 sm:py-1 rounded-full bg-[#58548C]/10 hover:bg-[#58548C] text-[#58548C] hover:text-white border border-[#58548C]/25 hover:border-[#58548C] font-bold transition-all duration-300 shadow-2xs hover:shadow-xs transform hover:-translate-y-0.5"
           >
-            Signup as a Brave Edge Vendor
+            <span>Signup as Brave Edge Vendor</span>
           </a>
+
+          {/* 2. Resources */}
           <a
             href="#resources"
             className="hover:text-[#58548C] transition-colors font-semibold text-neutral-700 hover:scale-105 transform duration-200"
           >
             Resources
           </a>
+
+          {/* 3. Contact Us */}
+          <a
+            href="#contact"
+            className="hover:text-[#F27C23] transition-colors font-semibold text-neutral-700 hover:scale-105 transform duration-200"
+          >
+            Contact Us
+          </a>
+
+          {/* 4. Privacy */}
           <a
             href="#privacy"
             className="hover:text-neutral-900 transition-colors text-neutral-500 hover:scale-105 transform duration-200"
