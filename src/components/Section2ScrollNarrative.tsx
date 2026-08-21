@@ -1,5 +1,5 @@
 import React from 'react';
-import { Database, Layers, Workflow, Sparkles, ArrowRight } from 'lucide-react';
+import { Database, Layers, Workflow, Sparkles, Network } from 'lucide-react';
 
 interface Section2ScrollNarrativeProps {
   scrollProgress: number; // Overall scroll progress (0.0 to 1.0)
@@ -34,11 +34,18 @@ export const Section2ScrollNarrative: React.FC<Section2ScrollNarrativeProps> = (
   const step3Opacity = step3T * exitOpacity;
   const step3Y = (1 - step3T) * 20;
 
-  // Talk to Leo Button Visibility (Appears ONLY after 3rd point is visible towards end of scroll)
-  const leoT = Math.min(1.0, Math.max(0.0, (normProgress - 0.62) / 0.20));
-  const leoOpacity = leoT * exitOpacity;
-  const leoScale = 0.9 + leoT * 0.1;
-  const leoY = (1 - leoT) * 12;
+  // Right Stacked Cards Reveal (Staggered animation across scroll progress)
+  const card1T = Math.min(1.0, Math.max(0.0, (normProgress - 0.35) / 0.22));
+  const card1Opacity = card1T * exitOpacity;
+  const card1Y = (1 - card1T) * 16;
+
+  const card2T = Math.min(1.0, Math.max(0.0, (normProgress - 0.48) / 0.22));
+  const card2Opacity = card2T * exitOpacity;
+  const card2Y = (1 - card2T) * 16;
+
+  const card3T = Math.min(1.0, Math.max(0.0, (normProgress - 0.60) / 0.22));
+  const card3Opacity = card3T * exitOpacity;
+  const card3Y = (1 - card3T) * 16;
 
   // Vertical connecting line fill percentage
   const lineFillPercent = Math.min(100, Math.max(0, normProgress * 100));
@@ -48,7 +55,7 @@ export const Section2ScrollNarrative: React.FC<Section2ScrollNarrativeProps> = (
       className="absolute inset-0 z-20 pointer-events-none flex items-center justify-start select-none transition-opacity duration-150 ease-out"
       style={{ opacity: exitOpacity }}
     >
-      <div className="max-w-[1720px] w-full mx-auto px-4 sm:px-10 lg:px-14 relative h-full flex items-center">
+      <div className="max-w-[1720px] w-full mx-auto px-4 sm:px-10 lg:px-14 relative h-full flex items-center justify-between">
         
         {/* LEFT COLUMN: Stepper Narrative Container */}
         {/* Mobile: max-w-[58vw] left-1 (never overlays mascot) | Desktop: max-w-[460px] preserved */}
@@ -166,36 +173,121 @@ export const Section2ScrollNarrative: React.FC<Section2ScrollNarrativeProps> = (
 
         </div>
 
-        {/* RIGHT SIDE: Cute, Modern, Compact Floating Glass Pill for "Talk to Leo" */}
-        {/* Desktop (>= 1024px): Positioned beside gaze | Mobile (< 1024px): Positioned bottom-right out of face */}
-        {leoT > 0.02 && (
-          <div
-            className="absolute right-3 sm:right-6 lg:right-16 xl:right-24 bottom-6 sm:bottom-10 lg:top-[54%] lg:-translate-y-1/2 z-30 pointer-events-auto transition-all duration-500 ease-out"
-            style={{
-              opacity: leoOpacity,
-              transform: `translateY(${leoY}px) scale(${leoScale})`
-            }}
-          >
-            <a
-              href="#chat-leo"
-              className="group relative inline-flex items-center gap-2 sm:gap-2.5 bg-white/95 hover:bg-white backdrop-blur-xl text-neutral-900 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-lg shadow-orange-500/15 hover:shadow-xl hover:shadow-orange-500/25 border border-orange-200/90 hover:border-[#F27C23] transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-105"
+        {/* RIGHT COLUMN: Animated Stacked Cards strictly within the red rectangle area */}
+        <div className="absolute right-3 sm:right-6 lg:right-10 xl:right-14 top-1/2 -translate-y-1/2 z-30 pointer-events-auto max-w-[290px] sm:max-w-[340px] lg:max-w-[370px] xl:max-w-[390px] w-full space-y-3 sm:space-y-3.5">
+          
+          {/* CARD 1: INTELLIGENT WEBSITES */}
+          {card1T > 0.02 && (
+            <div
+              className="p-3.5 sm:p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-neutral-100/90 shadow-md shadow-neutral-200/40 hover:shadow-xl hover:border-orange-200 transition-all duration-300 transform hover:-translate-y-0.5"
+              style={{
+                opacity: card1Opacity,
+                transform: `translateY(${card1Y}px)`
+              }}
             >
-              {/* Cute Orange AI Avatar Node with Pulse Dot */}
-              <div className="relative w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-gradient-to-tr from-[#F27C23] to-[#EB893D] text-white flex items-center justify-center shrink-0 shadow-xs">
-                <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-white text-white group-hover:rotate-12 transition-transform" />
-                <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-400 border border-white animate-pulse" />
+              <div className="flex items-center gap-2 mb-1">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#F27C23]/10 text-[#F27C23] flex items-center justify-center shrink-0">
+                  <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 stroke-[2.5]" />
+                </div>
+                <h3 className="text-xs sm:text-sm font-extrabold text-neutral-900 uppercase tracking-wider">
+                  INTELLIGENT WEBSITES
+                </h3>
               </div>
+              <p className="text-[11px] sm:text-xs font-semibold text-neutral-600 mb-2 pl-0.5">
+                How we make your website intelligent
+              </p>
+              <div className="space-y-0.5 pl-0.5 border-t border-neutral-100/80 pt-2">
+                <div className="flex items-center gap-1.5 text-[11px] sm:text-xs font-medium text-neutral-700">
+                  <span className="text-[#F27C23] font-bold">→</span>
+                  <span>AI-Driven Personalisation</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-[11px] sm:text-xs font-medium text-neutral-700">
+                  <span className="text-[#F27C23] font-bold">→</span>
+                  <span>Intelligent Interactions</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-[11px] sm:text-xs font-medium text-neutral-700">
+                  <span className="text-[#F27C23] font-bold">→</span>
+                  <span>Adaptive Content</span>
+                </div>
+              </div>
+            </div>
+          )}
 
-              {/* Cute Single-Line Label */}
-              <span className="text-[11px] sm:text-sm font-bold text-neutral-800 group-hover:text-[#F27C23] transition-colors tracking-wide">
-                Talk to Leo
-              </span>
+          {/* CARD 2: CONTEXTUAL AI */}
+          {card2T > 0.02 && (
+            <div
+              className="p-3.5 sm:p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-neutral-100/90 shadow-md shadow-neutral-200/40 hover:shadow-xl hover:border-purple-200 transition-all duration-300 transform hover:-translate-y-0.5"
+              style={{
+                opacity: card2Opacity,
+                transform: `translateY(${card2Y}px)`
+              }}
+            >
+              <div className="flex items-center gap-2 mb-1">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#58548C]/10 text-[#58548C] flex items-center justify-center shrink-0">
+                  <Database className="w-3 h-3 sm:w-3.5 sm:h-3.5 stroke-[2.5]" />
+                </div>
+                <h3 className="text-xs sm:text-sm font-extrabold text-neutral-900 uppercase tracking-wider">
+                  CONTEXTUAL AI
+                </h3>
+              </div>
+              <p className="text-[11px] sm:text-xs font-semibold text-neutral-600 mb-2 pl-0.5">
+                How we make AI understand your business
+              </p>
+              <div className="space-y-0.5 pl-0.5 border-t border-neutral-100/80 pt-2">
+                <div className="flex items-center gap-1.5 text-[11px] sm:text-xs font-medium text-neutral-700">
+                  <span className="text-[#58548C] font-bold">→</span>
+                  <span>Business Knowledge AI</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-[11px] sm:text-xs font-medium text-neutral-700">
+                  <span className="text-[#58548C] font-bold">→</span>
+                  <span>AI Agents & Assistants</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-[11px] sm:text-xs font-medium text-neutral-700">
+                  <span className="text-[#58548C] font-bold">→</span>
+                  <span>Knowledge-Driven Automation</span>
+                </div>
+              </div>
+            </div>
+          )}
 
-              {/* Small Subtle Arrow */}
-              <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#F27C23] group-hover:translate-x-0.5 transition-transform" />
-            </a>
-          </div>
-        )}
+          {/* CARD 3: CONNECTED ECOSYSTEMS */}
+          {card3T > 0.02 && (
+            <div
+              className="p-3.5 sm:p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-neutral-100/90 shadow-md shadow-neutral-200/40 hover:shadow-xl hover:border-orange-200 transition-all duration-300 transform hover:-translate-y-0.5"
+              style={{
+                opacity: card3Opacity,
+                transform: `translateY(${card3Y}px)`
+              }}
+            >
+              <div className="flex items-center gap-2 mb-1">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#F27C23]/10 text-[#F27C23] flex items-center justify-center shrink-0">
+                  <Network className="w-3 h-3 sm:w-3.5 sm:h-3.5 stroke-[2.5]" />
+                </div>
+                <h3 className="text-xs sm:text-sm font-extrabold text-neutral-900 uppercase tracking-wider">
+                  CONNECTED ECOSYSTEMS
+                </h3>
+              </div>
+              <p className="text-[11px] sm:text-xs font-semibold text-neutral-600 mb-2 pl-0.5">
+                How we connect intelligence to your business
+              </p>
+              <div className="space-y-0.5 pl-0.5 border-t border-neutral-100/80 pt-2">
+                <div className="flex items-center gap-1.5 text-[11px] sm:text-xs font-medium text-neutral-700">
+                  <span className="text-[#F27C23] font-bold">→</span>
+                  <span>Data & System Integration</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-[11px] sm:text-xs font-medium text-neutral-700">
+                  <span className="text-[#F27C23] font-bold">→</span>
+                  <span>Connected Workflows</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-[11px] sm:text-xs font-medium text-neutral-700">
+                  <span className="text-[#F27C23] font-bold">→</span>
+                  <span>Intelligent Business Layer</span>
+                </div>
+              </div>
+            </div>
+          )}
+
+        </div>
 
       </div>
     </div>
