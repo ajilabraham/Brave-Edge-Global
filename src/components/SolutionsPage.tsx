@@ -27,6 +27,7 @@ interface SolutionsPageProps {
   onNavigateAbout?: () => void;
   onNavigateServices?: (bookmark?: string) => void;
   onNavigateUseCases?: (bookmark?: string) => void;
+  onNavigateContact?: () => void;
   activeBookmark?: string;
 }
 
@@ -35,6 +36,7 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({
   onNavigateAbout,
   onNavigateServices,
   onNavigateUseCases,
+  onNavigateContact,
   activeBookmark
 }) => {
   // Handle smooth scrolling to bookmarks on mount or hash change
@@ -189,7 +191,12 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({
 
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 bg-[#58548C] hover:bg-[#474378] text-white px-5 py-3 rounded-2xl text-xs font-bold tracking-wide shadow-md shadow-purple-500/20 hover:shadow-lg transition-all duration-200 group shrink-0 self-start lg:self-center"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigateContact) onNavigateContact();
+                else window.location.hash = '#contact';
+              }}
+              className="inline-flex items-center gap-2 bg-[#58548C] hover:bg-[#474378] text-white px-5 py-3 rounded-2xl text-xs font-bold tracking-wide shadow-md shadow-purple-500/20 hover:shadow-lg transition-all duration-200 group shrink-0 self-start lg:self-center cursor-pointer"
             >
               <span>Automate Operations</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
@@ -339,7 +346,12 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({
 
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 bg-[#F27C23] hover:bg-[#E06B12] text-white px-5 py-3 rounded-2xl text-xs font-bold tracking-wide shadow-md shadow-orange-500/20 hover:shadow-lg transition-all duration-200 group shrink-0 self-start lg:self-center"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigateContact) onNavigateContact();
+                else window.location.hash = '#contact';
+              }}
+              className="inline-flex items-center gap-2 bg-[#F27C23] hover:bg-[#E06B12] text-white px-5 py-3 rounded-2xl text-xs font-bold tracking-wide shadow-md shadow-orange-500/20 hover:shadow-lg transition-all duration-200 group shrink-0 self-start lg:self-center cursor-pointer"
             >
               <span>Consolidate Knowledge</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
@@ -489,9 +501,14 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({
 
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 bg-[#45769B] hover:bg-[#386282] text-white px-5 py-3 rounded-2xl text-xs font-bold tracking-wide shadow-md shadow-sky-500/20 hover:shadow-lg transition-all duration-200 group shrink-0 self-start lg:self-center"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigateContact) onNavigateContact();
+                else window.location.hash = '#contact';
+              }}
+              className="inline-flex items-center gap-2 bg-[#45769B] hover:bg-[#386282] text-white px-5 py-3 rounded-2xl text-xs font-bold tracking-wide shadow-md shadow-sky-500/20 hover:shadow-lg transition-all duration-200 group shrink-0 self-start lg:self-center cursor-pointer"
             >
-              <span>Connect Systems</span>
+              <span>Build Connectors</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
             </a>
           </div>
@@ -639,9 +656,14 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({
 
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 bg-[#F19638] hover:bg-[#E08628] text-white px-5 py-3 rounded-2xl text-xs font-bold tracking-wide shadow-md shadow-amber-500/20 hover:shadow-lg transition-all duration-200 group shrink-0 self-start lg:self-center"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigateContact) onNavigateContact();
+                else window.location.hash = '#contact';
+              }}
+              className="inline-flex items-center gap-2 bg-[#F19638] hover:bg-[#E08628] text-white px-5 py-3 rounded-2xl text-xs font-bold tracking-wide shadow-md shadow-amber-500/20 hover:shadow-lg transition-all duration-200 group shrink-0 self-start lg:self-center cursor-pointer"
             >
-              <span>Train Your Workforce</span>
+              <span>Schedule AI Training</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
             </a>
           </div>
@@ -824,7 +846,12 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({
           <div className="mt-10 pt-8 border-t border-white/10 flex flex-wrap items-center justify-center gap-4">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2.5 bg-gradient-to-r from-[#F27C23] via-[#EB893D] to-[#58548C] hover:opacity-95 text-white px-8 py-4 rounded-2xl text-sm font-bold shadow-xl shadow-orange-500/20 transition-all duration-300 group"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigateContact) onNavigateContact();
+                else window.location.hash = '#contact';
+              }}
+              className="inline-flex items-center gap-2.5 bg-gradient-to-r from-[#F27C23] via-[#EB893D] to-[#58548C] hover:opacity-95 text-white px-8 py-4 rounded-2xl text-sm font-bold shadow-xl shadow-orange-500/20 transition-all duration-300 group cursor-pointer"
             >
               <span>Request Architecture Blueprint</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -851,6 +878,7 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({
             else if (view === 'about' && onNavigateAbout) onNavigateAbout();
             else if (view === 'services' && onNavigateServices) onNavigateServices();
             else if (view === 'use-cases' && onNavigateUseCases) onNavigateUseCases();
+            else if (view === 'contact' && onNavigateContact) onNavigateContact();
           }}
         />
       </div>

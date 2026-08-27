@@ -12,7 +12,16 @@ import {
 
 interface HeroOverlayProps {
   onNavigate?: (
-    view: 'home' | 'about' | 'services' | 'solutions' | 'use-cases' | 'intelligent-websites' | 'contextual-ai' | 'connected-ecosystems',
+    view:
+      | 'home'
+      | 'about'
+      | 'services'
+      | 'solutions'
+      | 'use-cases'
+      | 'intelligent-websites'
+      | 'contextual-ai'
+      | 'connected-ecosystems'
+      | 'contact',
     bookmark?: string
   ) => void;
 }
@@ -228,7 +237,11 @@ export const HeroOverlay: React.FC<HeroOverlayProps> = ({ onNavigate }) => {
             <div className="col-span-5 flex flex-col gap-1.5 pt-0.5">
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center gap-1 bg-[#F27C23] text-white px-2.5 py-2 rounded-xl text-[10px] sm:text-[11px] font-bold shadow-md text-center leading-tight"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (onNavigate) onNavigate('services');
+                }}
+                className="inline-flex items-center justify-center gap-1 bg-[#F27C23] text-white px-2.5 py-2 rounded-xl text-[10px] sm:text-[11px] font-bold shadow-md text-center leading-tight cursor-pointer"
               >
                 <span>Explore how it works</span>
                 <ArrowRight className="w-3 h-3 shrink-0" />

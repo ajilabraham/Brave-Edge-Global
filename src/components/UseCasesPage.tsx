@@ -24,6 +24,7 @@ interface UseCasesPageProps {
   onNavigateAbout?: () => void;
   onNavigateServices?: (bookmark?: string) => void;
   onNavigateSolutions?: (bookmark?: string) => void;
+  onNavigateContact?: () => void;
   activeBookmark?: string;
 }
 
@@ -32,6 +33,7 @@ export const UseCasesPage: React.FC<UseCasesPageProps> = ({
   onNavigateAbout,
   onNavigateServices,
   onNavigateSolutions,
+  onNavigateContact,
   activeBookmark
 }) => {
   // Handle smooth scrolling to bookmarks on mount or hash change with scrollIntoView
@@ -165,7 +167,12 @@ export const UseCasesPage: React.FC<UseCasesPageProps> = ({
             <div className="w-px h-8 bg-neutral-200 hidden sm:block" />
             <a
               href="#contact"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-bold transition-all"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigateContact) onNavigateContact();
+                else window.location.hash = '#contact';
+              }}
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-bold transition-all cursor-pointer"
             >
               <span>Nordic Audit</span>
               <ArrowRight className="w-3 h-3" />
@@ -210,7 +217,12 @@ export const UseCasesPage: React.FC<UseCasesPageProps> = ({
 
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white px-5 py-3 rounded-2xl text-xs font-bold tracking-wide shadow-md shadow-emerald-700/20 hover:shadow-lg transition-all duration-200 group shrink-0 self-start lg:self-center"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigateContact) onNavigateContact();
+                else window.location.hash = '#contact';
+              }}
+              className="inline-flex items-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white px-5 py-3 rounded-2xl text-xs font-bold tracking-wide shadow-md shadow-emerald-700/20 hover:shadow-lg transition-all duration-200 group shrink-0 self-start lg:self-center cursor-pointer"
             >
               <span>Modernize Manufacturing Web</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
@@ -350,7 +362,12 @@ export const UseCasesPage: React.FC<UseCasesPageProps> = ({
 
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 bg-[#58548C] hover:bg-[#484478] text-white px-5 py-3 rounded-2xl text-xs font-bold tracking-wide shadow-md shadow-purple-500/20 hover:shadow-lg transition-all duration-200 group shrink-0 self-start lg:self-center"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigateContact) onNavigateContact();
+                else window.location.hash = '#contact';
+              }}
+              className="inline-flex items-center gap-2 bg-[#58548C] hover:bg-[#484478] text-white px-5 py-3 rounded-2xl text-xs font-bold tracking-wide shadow-md shadow-purple-500/20 hover:shadow-lg transition-all duration-200 group shrink-0 self-start lg:self-center cursor-pointer"
             >
               <span>Elevate Advisory Brand</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
@@ -490,7 +507,12 @@ export const UseCasesPage: React.FC<UseCasesPageProps> = ({
 
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 bg-[#45769B] hover:bg-[#386282] text-white px-5 py-3 rounded-2xl text-xs font-bold tracking-wide shadow-md shadow-sky-500/20 hover:shadow-lg transition-all duration-200 group shrink-0 self-start lg:self-center"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigateContact) onNavigateContact();
+                else window.location.hash = '#contact';
+              }}
+              className="inline-flex items-center gap-2 bg-[#45769B] hover:bg-[#386282] text-white px-5 py-3 rounded-2xl text-xs font-bold tracking-wide shadow-md shadow-sky-500/20 hover:shadow-lg transition-all duration-200 group shrink-0 self-start lg:self-center cursor-pointer"
             >
               <span>Automate Logistics Web</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
@@ -647,7 +669,12 @@ export const UseCasesPage: React.FC<UseCasesPageProps> = ({
           <div className="mt-10 pt-8 border-t border-white/10 flex flex-wrap items-center justify-center gap-4">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2.5 bg-gradient-to-r from-[#F27C23] via-[#EB893D] to-[#45769B] hover:opacity-95 text-white px-8 py-4 rounded-2xl text-sm font-bold shadow-xl shadow-orange-500/20 transition-all duration-300 group"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigateContact) onNavigateContact();
+                else window.location.hash = '#contact';
+              }}
+              className="inline-flex items-center gap-2.5 bg-gradient-to-r from-[#F27C23] via-[#EB893D] to-[#45769B] hover:opacity-95 text-white px-8 py-4 rounded-2xl text-sm font-bold shadow-xl shadow-orange-500/20 transition-all duration-300 group cursor-pointer"
             >
               <span>Schedule a Nordic SME Assessment</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -674,6 +701,7 @@ export const UseCasesPage: React.FC<UseCasesPageProps> = ({
             else if (view === 'about' && onNavigateAbout) onNavigateAbout();
             else if (view === 'services' && onNavigateServices) onNavigateServices();
             else if (view === 'solutions' && onNavigateSolutions) onNavigateSolutions();
+            else if (view === 'contact' && onNavigateContact) onNavigateContact();
           }}
         />
       </div>

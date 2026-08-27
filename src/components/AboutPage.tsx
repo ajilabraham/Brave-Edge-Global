@@ -24,13 +24,15 @@ interface AboutPageProps {
   onNavigateServices?: (bookmark?: string) => void;
   onNavigateSolutions?: (bookmark?: string) => void;
   onNavigateUseCases?: (bookmark?: string) => void;
+  onNavigateContact?: () => void;
 }
 
 export const AboutPage: React.FC<AboutPageProps> = ({
   onNavigateHome,
   onNavigateServices,
   onNavigateSolutions,
-  onNavigateUseCases
+  onNavigateUseCases,
+  onNavigateContact
 }) => {
   // Scroll to top when the component mounts
   useEffect(() => {
@@ -78,7 +80,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2.5 bg-[#F27C23] hover:bg-[#E06B12] text-white px-7 py-3.5 rounded-2xl text-sm font-bold shadow-lg shadow-orange-500/20 hover:shadow-xl transition-all duration-300 group"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigateContact) onNavigateContact();
+                else window.location.hash = '#contact';
+              }}
+              className="inline-flex items-center gap-2.5 bg-[#F27C23] hover:bg-[#E06B12] text-white px-7 py-3.5 rounded-2xl text-sm font-bold shadow-lg shadow-orange-500/20 hover:shadow-xl transition-all duration-300 group cursor-pointer"
             >
               <span>Partner with Us</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -453,7 +460,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2.5 bg-gradient-to-r from-[#F27C23] via-[#EB893D] to-[#58548C] hover:opacity-95 text-white px-8 py-4 rounded-2xl text-sm font-bold shadow-xl shadow-orange-500/20 transition-all duration-300 group"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigateContact) onNavigateContact();
+                else window.location.hash = '#contact';
+              }}
+              className="inline-flex items-center gap-2.5 bg-gradient-to-r from-[#F27C23] via-[#EB893D] to-[#58548C] hover:opacity-95 text-white px-8 py-4 rounded-2xl text-sm font-bold shadow-xl shadow-orange-500/20 transition-all duration-300 group cursor-pointer"
             >
               <span>Schedule an Intelligence Briefing</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

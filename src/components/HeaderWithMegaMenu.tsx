@@ -24,8 +24,29 @@ import {
 type MegaMenuKey = 'services' | 'solutions' | 'use-cases' | null;
 
 interface HeaderWithMegaMenuProps {
-  currentView?: 'home' | 'about' | 'services' | 'solutions' | 'use-cases' | 'intelligent-websites' | 'contextual-ai' | 'connected-ecosystems';
-  onNavigate?: (view: 'home' | 'about' | 'services' | 'solutions' | 'use-cases' | 'intelligent-websites' | 'contextual-ai' | 'connected-ecosystems', bookmark?: string) => void;
+  currentView?:
+    | 'home'
+    | 'about'
+    | 'services'
+    | 'solutions'
+    | 'use-cases'
+    | 'intelligent-websites'
+    | 'contextual-ai'
+    | 'connected-ecosystems'
+    | 'contact';
+  onNavigate?: (
+    view:
+      | 'home'
+      | 'about'
+      | 'services'
+      | 'solutions'
+      | 'use-cases'
+      | 'intelligent-websites'
+      | 'contextual-ai'
+      | 'connected-ecosystems'
+      | 'contact',
+    bookmark?: string
+  ) => void;
 }
 
 export const HeaderWithMegaMenu: React.FC<HeaderWithMegaMenuProps> = ({
@@ -129,6 +150,16 @@ export const HeaderWithMegaMenu: React.FC<HeaderWithMegaMenuProps> = ({
     scrollToBookmarkWithOffset(bookmark);
   };
 
+  const handleContactNav = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    setActiveMenu(null);
+    setMobileMenuOpen(false);
+    window.location.hash = '#contact';
+    if (onNavigate) {
+      onNavigate('contact');
+    }
+  };
+
   return (
     <header
       className="fixed top-0 left-0 right-0 z-50 bg-white/75 backdrop-blur-2xl border-b border-white/60 shadow-xs transition-all duration-300 select-none"
@@ -227,19 +258,29 @@ export const HeaderWithMegaMenu: React.FC<HeaderWithMegaMenuProps> = ({
           >
             About
           </button>
+
+          <button
+            onClick={handleContactNav}
+            className={`px-4 py-2 rounded-full transition-all duration-200 cursor-pointer font-semibold ${
+              currentView === 'contact'
+                ? 'bg-orange-50/90 backdrop-blur-md text-[#F27C23] font-bold shadow-2xs'
+                : 'hover:text-neutral-900 hover:bg-neutral-100/60 backdrop-blur-sm text-neutral-600'
+            }`}
+          >
+            Contact
+          </button>
         </nav>
 
         {/* Primary CTA & Mobile Toggle */}
         <div className="flex items-center gap-4 z-10">
           <a
             href="#contact"
-            onClick={(e) => {
-              if (currentView !== 'home') {
-                e.preventDefault();
-                handleHomeNav('contact');
-              }
-            }}
-            className="hidden sm:inline-flex items-center gap-2.5 bg-gradient-to-r from-[#F27C23] via-[#EB893D] to-[#58548C] hover:opacity-95 text-white px-5 py-2.5 rounded-full text-xs font-bold tracking-wide shadow-md shadow-orange-500/20 hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 group"
+            onClick={handleContactNav}
+            className={`hidden sm:inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full text-xs font-bold tracking-wide transition-all duration-300 group cursor-pointer ${
+              currentView === 'contact'
+                ? 'bg-[#F27C23] text-white shadow-lg ring-2 ring-orange-300'
+                : 'bg-gradient-to-r from-[#F27C23] via-[#EB893D] to-[#58548C] hover:opacity-95 text-white shadow-md shadow-orange-500/20 hover:shadow-lg hover:shadow-orange-500/30'
+            }`}
           >
             <span>Talk to an Expert</span>
             <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
@@ -725,9 +766,17 @@ export const HeaderWithMegaMenu: React.FC<HeaderWithMegaMenuProps> = ({
             >
               About
             </button>
+            <button
+              onClick={handleContactNav}
+              className={`block w-full text-left py-2 cursor-pointer font-bold ${
+                currentView === 'contact' ? 'text-[#F27C23]' : 'text-neutral-700 hover:text-[#F27C23]'
+              }`}
+            >
+              Contact
+            </button>
           </div>
           <button
-            onClick={() => handleHomeNav('contact')}
+            onClick={handleContactNav}
             className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#F27C23] to-[#58548C] text-white px-5 py-3 rounded-full text-xs font-bold shadow-md cursor-pointer"
           >
             <span>Talk to an Expert</span>

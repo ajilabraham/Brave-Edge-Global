@@ -2,11 +2,34 @@ import React from 'react';
 import { Sparkles, ArrowRight } from 'lucide-react';
 
 interface WebsiteFooterBarProps {
-  onNavigate?: (view: 'home' | 'about' | 'services' | 'solutions' | 'use-cases' | 'intelligent-websites' | 'contextual-ai' | 'connected-ecosystems') => void;
+  onNavigate?: (
+    view:
+      | 'home'
+      | 'about'
+      | 'services'
+      | 'solutions'
+      | 'use-cases'
+      | 'intelligent-websites'
+      | 'contextual-ai'
+      | 'connected-ecosystems'
+      | 'contact'
+  ) => void;
 }
 
 export const WebsiteFooterBar: React.FC<WebsiteFooterBarProps> = ({ onNavigate }) => {
-  const handleNav = (view: 'home' | 'about' | 'services' | 'solutions' | 'use-cases' | 'intelligent-websites' | 'contextual-ai' | 'connected-ecosystems', hash?: string) => {
+  const handleNav = (
+    view:
+      | 'home'
+      | 'about'
+      | 'services'
+      | 'solutions'
+      | 'use-cases'
+      | 'intelligent-websites'
+      | 'contextual-ai'
+      | 'connected-ecosystems'
+      | 'contact',
+    hash?: string
+  ) => {
     if (onNavigate) {
       onNavigate(view);
     }
@@ -25,7 +48,9 @@ export const WebsiteFooterBar: React.FC<WebsiteFooterBarProps> = ({ onNavigate }
     } else if (view === 'contextual-ai') {
       window.location.hash = '#contextual-ai';
     } else if (view === 'connected-ecosystems') {
-      window.location.hash = '#system-connectors';
+      window.location.hash = '#connected-ecosystems';
+    } else if (view === 'contact') {
+      window.location.hash = '#contact';
     } else {
       window.location.hash = '';
     }
@@ -94,13 +119,12 @@ export const WebsiteFooterBar: React.FC<WebsiteFooterBarProps> = ({ onNavigate }
           </button>
 
           {/* 6. Contact Us */}
-          <a
-            href="#contact"
-            onClick={() => handleNav('home', 'contact')}
-            className="hover:text-[#F27C23] transition-colors font-semibold text-neutral-700 hover:scale-105 transform duration-200"
+          <button
+            onClick={() => handleNav('contact')}
+            className="hover:text-[#F27C23] transition-colors font-semibold text-neutral-700 hover:scale-105 transform duration-200 cursor-pointer bg-transparent border-0 p-0"
           >
             Contact Us
-          </a>
+          </button>
 
           {/* 5. Privacy */}
           <a

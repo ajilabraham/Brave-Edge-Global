@@ -18,6 +18,7 @@ interface ConnectedEcosystemsPageProps {
   onNavigateSolutions?: (bookmark?: string) => void;
   onNavigateUseCases?: (bookmark?: string) => void;
   onNavigatePillar?: (pillar: 'intelligent-websites' | 'contextual-ai' | 'connected-ecosystems') => void;
+  onNavigateContact?: () => void;
 }
 
 export const ConnectedEcosystemsPage: React.FC<ConnectedEcosystemsPageProps> = ({
@@ -26,7 +27,8 @@ export const ConnectedEcosystemsPage: React.FC<ConnectedEcosystemsPageProps> = (
   onNavigateServices,
   onNavigateSolutions,
   onNavigateUseCases,
-  onNavigatePillar
+  onNavigatePillar,
+  onNavigateContact
 }) => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -324,6 +326,7 @@ export const ConnectedEcosystemsPage: React.FC<ConnectedEcosystemsPageProps> = (
             else if (view === 'services' && onNavigateServices) onNavigateServices();
             else if (view === 'solutions' && onNavigateSolutions) onNavigateSolutions();
             else if (view === 'use-cases' && onNavigateUseCases) onNavigateUseCases();
+            else if (view === 'contact' && onNavigateContact) onNavigateContact();
           }}
         />
       </div>

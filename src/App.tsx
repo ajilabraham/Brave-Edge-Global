@@ -10,6 +10,7 @@ import { UseCasesPage } from './components/UseCasesPage';
 import { IntelligentWebsitesPage } from './components/IntelligentWebsitesPage';
 import { ContextualAiPage } from './components/ContextualAiPage';
 import { ConnectedEcosystemsPage } from './components/ConnectedEcosystemsPage';
+import { ContactPage } from './components/ContactPage';
 
 export type AppView =
   | 'home'
@@ -19,12 +20,14 @@ export type AppView =
   | 'use-cases'
   | 'intelligent-websites'
   | 'contextual-ai'
-  | 'connected-ecosystems';
+  | 'connected-ecosystems'
+  | 'contact';
 
 export function App() {
   const getViewFromHash = (): AppView => {
     const hash = window.location.hash;
     if (hash === '#about') return 'about';
+    if (hash === '#contact') return 'contact';
     if (
       hash === '#services' ||
       hash === '#modern-corporate-websites' ||
@@ -88,6 +91,8 @@ export function App() {
     setActiveBookmark(bookmark);
     if (view === 'about') {
       window.location.hash = '#about';
+    } else if (view === 'contact') {
+      window.location.hash = '#contact';
     } else if (view === 'services') {
       window.location.hash = bookmark ? `#${bookmark}` : '#services';
     } else if (view === 'solutions') {
@@ -114,7 +119,18 @@ export function App() {
       <HeaderWithMegaMenu currentView={currentView} onNavigate={handleNavigate} />
 
       {/* VIEW SWITCHER */}
-      {currentView === 'connected-ecosystems' ? (
+      {currentView === 'contact' ? (
+        /* Dedicated Contact Us Page with Helsinki Hub details & enquiry intake */
+        <main className="w-full min-h-screen">
+          <ContactPage
+            onNavigateHome={() => handleNavigate('home')}
+            onNavigateAbout={() => handleNavigate('about')}
+            onNavigateServices={(bookmark) => handleNavigate('services', bookmark)}
+            onNavigateSolutions={(bookmark) => handleNavigate('solutions', bookmark)}
+            onNavigateUseCases={(bookmark) => handleNavigate('use-cases', bookmark)}
+          />
+        </main>
+      ) : currentView === 'connected-ecosystems' ? (
         /* Dedicated Connected Ecosystems Pillar Page */
         <main className="w-full min-h-screen">
           <ConnectedEcosystemsPage
@@ -124,6 +140,7 @@ export function App() {
             onNavigateSolutions={(bookmark) => handleNavigate('solutions', bookmark)}
             onNavigateUseCases={(bookmark) => handleNavigate('use-cases', bookmark)}
             onNavigatePillar={(pillar) => handleNavigate(pillar)}
+            onNavigateContact={() => handleNavigate('contact')}
           />
         </main>
       ) : currentView === 'contextual-ai' ? (
@@ -136,6 +153,7 @@ export function App() {
             onNavigateSolutions={(bookmark) => handleNavigate('solutions', bookmark)}
             onNavigateUseCases={(bookmark) => handleNavigate('use-cases', bookmark)}
             onNavigatePillar={(pillar) => handleNavigate(pillar)}
+            onNavigateContact={() => handleNavigate('contact')}
           />
         </main>
       ) : currentView === 'intelligent-websites' ? (
@@ -148,6 +166,7 @@ export function App() {
             onNavigateSolutions={(bookmark) => handleNavigate('solutions', bookmark)}
             onNavigateUseCases={(bookmark) => handleNavigate('use-cases', bookmark)}
             onNavigatePillar={(pillar) => handleNavigate(pillar)}
+            onNavigateContact={() => handleNavigate('contact')}
           />
         </main>
       ) : currentView === 'use-cases' ? (
@@ -158,6 +177,7 @@ export function App() {
             onNavigateAbout={() => handleNavigate('about')}
             onNavigateServices={(bookmark) => handleNavigate('services', bookmark)}
             onNavigateSolutions={(bookmark) => handleNavigate('solutions', bookmark)}
+            onNavigateContact={() => handleNavigate('contact')}
             activeBookmark={activeBookmark}
           />
         </main>
@@ -169,6 +189,7 @@ export function App() {
             onNavigateAbout={() => handleNavigate('about')}
             onNavigateServices={(bookmark) => handleNavigate('services', bookmark)}
             onNavigateUseCases={(bookmark) => handleNavigate('use-cases', bookmark)}
+            onNavigateContact={() => handleNavigate('contact')}
             activeBookmark={activeBookmark}
           />
         </main>
@@ -180,6 +201,7 @@ export function App() {
             onNavigateAbout={() => handleNavigate('about')}
             onNavigateSolutions={(bookmark) => handleNavigate('solutions', bookmark)}
             onNavigateUseCases={(bookmark) => handleNavigate('use-cases', bookmark)}
+            onNavigateContact={() => handleNavigate('contact')}
             activeBookmark={activeBookmark}
           />
         </main>
@@ -191,6 +213,7 @@ export function App() {
             onNavigateServices={(bookmark) => handleNavigate('services', bookmark)}
             onNavigateSolutions={(bookmark) => handleNavigate('solutions', bookmark)}
             onNavigateUseCases={(bookmark) => handleNavigate('use-cases', bookmark)}
+            onNavigateContact={() => handleNavigate('contact')}
           />
         </main>
       ) : (
