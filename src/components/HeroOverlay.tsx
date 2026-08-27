@@ -7,7 +7,8 @@ import {
   Cpu,
   ArrowDown,
   Box,
-  Network
+  Network,
+  Sparkles
 } from 'lucide-react';
 
 interface HeroOverlayProps {
@@ -280,11 +281,12 @@ export const HeroOverlay: React.FC<HeroOverlayProps> = ({ onNavigate }) => {
 
         {/* Mobile Services & Solutions Cards Container */}
         <div className="w-full pt-3">
-          <p className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider text-neutral-600 mb-1.5 text-left flex items-center gap-1">
+          <p className="text-[10px] sm:text-xs font-extrabold uppercase tracking-wider text-neutral-600 mb-2 text-left flex items-center gap-1.5">
+            <Sparkles className="w-3 h-3 text-[#F27C23]" />
             <span>Services & Solutions</span>
             <ArrowRight className="w-3 h-3 text-[#F27C23]" />
           </p>
-          <div className="flex overflow-x-auto gap-2.5 pb-1 snap-x scrollbar-none">
+          <div className="flex overflow-x-auto gap-3 pb-2 pt-0.5 snap-x scrollbar-none">
             
             {/* Card 1: Intelligent Websites */}
             <a
@@ -294,14 +296,18 @@ export const HeroOverlay: React.FC<HeroOverlayProps> = ({ onNavigate }) => {
                 if (onNavigate) onNavigate('intelligent-websites');
                 else window.location.hash = '#intelligent-websites';
               }}
-              className="snap-start shrink-0 w-[205px] p-2.5 rounded-xl bg-white/95 border border-neutral-200/90 shadow-md flex items-center gap-2.5 cursor-pointer"
+              className="snap-start shrink-0 w-[270px] sm:w-[290px] p-3.5 sm:p-4 rounded-2xl bg-white/95 backdrop-blur-xl border border-neutral-200/90 shadow-md hover:shadow-lg transition-all duration-200 flex items-start gap-3 cursor-pointer text-left group"
             >
-              <div className="w-7.5 h-7.5 rounded-full bg-[#F27C23] text-white flex items-center justify-center shrink-0 shadow-xs">
-                <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
+              <div className="w-9 h-9 rounded-xl bg-[#F27C23] text-white flex items-center justify-center shrink-0 shadow-xs mt-0.5">
+                <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
               </div>
-              <div className="text-left">
-                <h3 className="text-[11px] sm:text-xs font-bold text-neutral-900 uppercase">Intelligent Websites</h3>
-                <p className="text-[9px] sm:text-[10px] text-neutral-500 truncate">Websites that can understand who is here and what they need.</p>
+              <div className="min-w-0 flex-1 space-y-0.5">
+                <h3 className="text-xs sm:text-sm font-black text-neutral-900 uppercase tracking-tight group-hover:text-[#F27C23] transition-colors">
+                  Intelligent Websites
+                </h3>
+                <p className="text-[11px] sm:text-xs text-neutral-600 font-normal leading-snug">
+                  Websites that can understand who is here and what they need.
+                </p>
               </div>
             </a>
 
@@ -313,14 +319,18 @@ export const HeroOverlay: React.FC<HeroOverlayProps> = ({ onNavigate }) => {
                 if (onNavigate) onNavigate('contextual-ai');
                 else window.location.hash = '#contextual-ai';
               }}
-              className="snap-start shrink-0 w-[205px] p-2.5 rounded-xl bg-white/95 border border-neutral-200/90 shadow-md flex items-center gap-2.5 cursor-pointer"
+              className="snap-start shrink-0 w-[270px] sm:w-[290px] p-3.5 sm:p-4 rounded-2xl bg-white/95 backdrop-blur-xl border border-neutral-200/90 shadow-md hover:shadow-lg transition-all duration-200 flex items-start gap-3 cursor-pointer text-left group"
             >
-              <div className="w-7.5 h-7.5 rounded-full bg-[#58548C] text-white flex items-center justify-center shrink-0 shadow-xs">
-                <Box className="w-3.5 h-3.5 stroke-[2]" />
+              <div className="w-9 h-9 rounded-xl bg-[#58548C] text-white flex items-center justify-center shrink-0 shadow-xs mt-0.5">
+                <Box className="w-4 h-4 stroke-[2]" />
               </div>
-              <div className="text-left">
-                <h3 className="text-[11px] sm:text-xs font-bold text-neutral-900 uppercase">Contextual AI</h3>
-                <p className="text-[9px] sm:text-[10px] text-neutral-500 truncate">Turns your business knowledge into useful AI for your website.</p>
+              <div className="min-w-0 flex-1 space-y-0.5">
+                <h3 className="text-xs sm:text-sm font-black text-neutral-900 uppercase tracking-tight group-hover:text-[#58548C] transition-colors">
+                  Contextual AI
+                </h3>
+                <p className="text-[11px] sm:text-xs text-neutral-600 font-normal leading-snug">
+                  Turns your business knowledge into useful AI for your website.
+                </p>
               </div>
             </a>
 
@@ -332,14 +342,18 @@ export const HeroOverlay: React.FC<HeroOverlayProps> = ({ onNavigate }) => {
                 if (onNavigate) onNavigate('connected-ecosystems');
                 else window.location.hash = '#connected-ecosystems';
               }}
-              className="snap-start shrink-0 w-[205px] p-2.5 rounded-xl bg-white/95 border border-neutral-200/90 shadow-md flex items-center gap-2.5 cursor-pointer"
+              className="snap-start shrink-0 w-[270px] sm:w-[290px] p-3.5 sm:p-4 rounded-2xl bg-white/95 backdrop-blur-xl border border-neutral-200/90 shadow-md hover:shadow-lg transition-all duration-200 flex items-start gap-3 cursor-pointer text-left group"
             >
-              <div className="w-7.5 h-7.5 rounded-full bg-white border-2 border-[#45769B] text-[#45769B] flex items-center justify-center shrink-0 shadow-xs">
-                <Network className="w-3.5 h-3.5 stroke-[2]" />
+              <div className="w-9 h-9 rounded-xl bg-[#45769B] text-white flex items-center justify-center shrink-0 shadow-xs mt-0.5">
+                <Network className="w-4 h-4 stroke-[2]" />
               </div>
-              <div className="text-left">
-                <h3 className="text-[11px] sm:text-xs font-bold text-neutral-900 uppercase">Connected Ecosystems</h3>
-                <p className="text-[9px] sm:text-[10px] text-neutral-500 truncate">Connects your website to the systems behind your business.</p>
+              <div className="min-w-0 flex-1 space-y-0.5">
+                <h3 className="text-xs sm:text-sm font-black text-neutral-900 uppercase tracking-tight group-hover:text-[#45769B] transition-colors">
+                  Connected Ecosystems
+                </h3>
+                <p className="text-[11px] sm:text-xs text-neutral-600 font-normal leading-snug">
+                  Connects your website to the systems behind your business.
+                </p>
               </div>
             </a>
 
