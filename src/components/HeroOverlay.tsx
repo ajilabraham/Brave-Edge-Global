@@ -10,7 +10,14 @@ import {
   Network
 } from 'lucide-react';
 
-export const HeroOverlay: React.FC = () => {
+interface HeroOverlayProps {
+  onNavigate?: (
+    view: 'home' | 'about' | 'services' | 'solutions' | 'use-cases' | 'intelligent-websites' | 'contextual-ai' | 'connected-ecosystems',
+    bookmark?: string
+  ) => void;
+}
+
+export const HeroOverlay: React.FC<HeroOverlayProps> = ({ onNavigate }) => {
   return (
     <div className="relative w-full h-full pt-16 lg:pt-20 pb-2 flex flex-col justify-between pointer-events-none z-10 select-none">
       
@@ -77,7 +84,11 @@ export const HeroOverlay: React.FC = () => {
           <div className="flex flex-wrap items-center gap-4 pt-3">
             <a
               href="#contact"
-              className="inline-flex items-center gap-3 bg-[#F27C23] hover:bg-[#E06B12] text-white px-7 py-3.5 rounded-2xl text-sm font-bold tracking-wide shadow-lg shadow-orange-500/20 hover:shadow-xl transition-all duration-200 group"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigate) onNavigate('services');
+              }}
+              className="inline-flex items-center gap-3 bg-[#F27C23] hover:bg-[#E06B12] text-white px-7 py-3.5 rounded-2xl text-sm font-bold tracking-wide shadow-lg shadow-orange-500/20 hover:shadow-xl transition-all duration-200 group cursor-pointer"
             >
               <span>Explore how it works</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -85,7 +96,11 @@ export const HeroOverlay: React.FC = () => {
 
             <a
               href="#use-cases"
-              className="inline-flex items-center gap-2.5 bg-white hover:bg-purple-50/60 border-2 border-[#58548C]/30 text-[#58548C] px-6 py-3.5 rounded-2xl text-sm font-bold transition-all duration-200 group shadow-2xs"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigate) onNavigate('use-cases');
+              }}
+              className="inline-flex items-center gap-2.5 bg-white hover:bg-purple-50/60 border-2 border-[#58548C]/30 text-[#58548C] px-6 py-3.5 rounded-2xl text-sm font-bold transition-all duration-200 group shadow-2xs cursor-pointer"
             >
               <Play className="w-4 h-4 fill-[#58548C] text-[#58548C]" />
               <span>See real use cases</span>
@@ -94,13 +109,20 @@ export const HeroOverlay: React.FC = () => {
         </div>
 
         {/* CENTER COLUMN: Protected Empty Visual Zone for Character Mascot (Cols 6-8) */}
-        <div className="hidden lg:block lg:col-span-3 xl:col-span-3 h-full pointer-events-none" />        {/* RIGHT COLUMN: 3 Stacked Action Blurb Cards (Cols 9-12) */}
+        <div className="hidden lg:block lg:col-span-3 xl:col-span-3 h-full pointer-events-none" />
+
+        {/* RIGHT COLUMN: 3 Stacked Action Blurb Cards (Cols 9-12) */}
         <div className="lg:col-span-4 xl:col-span-4 space-y-4 pointer-events-auto z-20 max-w-sm lg:ml-auto w-full">
           
           {/* Card 1: Intelligent Websites */}
           <a
-            href="#websites"
-            className="group p-5 rounded-2xl bg-white border border-neutral-100/90 shadow-md shadow-neutral-200/40 hover:shadow-xl hover:border-orange-200 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-between gap-4 block"
+            href="#intelligent-websites"
+            onClick={(e) => {
+              e.preventDefault();
+              if (onNavigate) onNavigate('intelligent-websites');
+              else window.location.hash = '#intelligent-websites';
+            }}
+            className="group p-5 rounded-2xl bg-white border border-neutral-100/90 shadow-md shadow-neutral-200/40 hover:shadow-xl hover:border-orange-200 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-between gap-4 block cursor-pointer"
           >
             <div className="flex items-center gap-4">
               <div className="w-11 h-11 rounded-full bg-[#F27C23] text-white flex items-center justify-center shrink-0 shadow-md shadow-orange-500/25 group-hover:scale-105 transition-transform">
@@ -120,8 +142,13 @@ export const HeroOverlay: React.FC = () => {
 
           {/* Card 2: Contextual AI */}
           <a
-            href="#solutions"
-            className="group p-5 rounded-2xl bg-white border border-neutral-100/90 shadow-md shadow-neutral-200/40 hover:shadow-xl hover:border-purple-200 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-between gap-4 block"
+            href="#contextual-ai"
+            onClick={(e) => {
+              e.preventDefault();
+              if (onNavigate) onNavigate('contextual-ai');
+              else window.location.hash = '#contextual-ai';
+            }}
+            className="group p-5 rounded-2xl bg-white border border-neutral-100/90 shadow-md shadow-neutral-200/40 hover:shadow-xl hover:border-purple-200 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-between gap-4 block cursor-pointer"
           >
             <div className="flex items-center gap-4">
               <div className="w-11 h-11 rounded-full bg-[#58548C] text-white flex items-center justify-center shrink-0 shadow-md shadow-purple-500/25 group-hover:scale-105 transition-transform">
@@ -141,15 +168,20 @@ export const HeroOverlay: React.FC = () => {
 
           {/* Card 3: Connected Ecosystems */}
           <a
-            href="#contact"
-            className="group p-5 rounded-2xl bg-white border border-neutral-100/90 shadow-md shadow-neutral-200/40 hover:shadow-xl hover:border-orange-200 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-between gap-4 block"
+            href="#connected-ecosystems"
+            onClick={(e) => {
+              e.preventDefault();
+              if (onNavigate) onNavigate('connected-ecosystems');
+              else window.location.hash = '#connected-ecosystems';
+            }}
+            className="group p-5 rounded-2xl bg-white border border-neutral-100/90 shadow-md shadow-neutral-200/40 hover:shadow-xl hover:border-sky-200 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-between gap-4 block cursor-pointer"
           >
             <div className="flex items-center gap-4">
-              <div className="w-11 h-11 rounded-full bg-white border-2 border-[#F27C23] text-[#F27C23] flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+              <div className="w-11 h-11 rounded-full bg-white border-2 border-[#45769B] text-[#45769B] flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
                 <Network className="w-5 h-5 stroke-[2]" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-neutral-900 group-hover:text-[#F27C23] transition-colors leading-snug uppercase tracking-wide">
+                <h3 className="text-sm font-bold text-neutral-900 group-hover:text-[#45769B] transition-colors leading-snug uppercase tracking-wide">
                   Connected Ecosystems
                 </h3>
                 <p className="text-xs text-neutral-500 leading-normal mt-0.5">
@@ -157,7 +189,7 @@ export const HeroOverlay: React.FC = () => {
                 </p>
               </div>
             </div>
-            <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-[#F27C23] group-hover:translate-x-1 transition-all shrink-0" />
+            <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-[#45769B] group-hover:translate-x-1 transition-all shrink-0" />
           </a>
         </div>
 
@@ -243,8 +275,13 @@ export const HeroOverlay: React.FC = () => {
             
             {/* Card 1: Intelligent Websites */}
             <a
-              href="#websites"
-              className="snap-start shrink-0 w-[205px] p-2.5 rounded-xl bg-white/95 border border-neutral-200/90 shadow-md flex items-center gap-2.5"
+              href="#intelligent-websites"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigate) onNavigate('intelligent-websites');
+                else window.location.hash = '#intelligent-websites';
+              }}
+              className="snap-start shrink-0 w-[205px] p-2.5 rounded-xl bg-white/95 border border-neutral-200/90 shadow-md flex items-center gap-2.5 cursor-pointer"
             >
               <div className="w-7.5 h-7.5 rounded-full bg-[#F27C23] text-white flex items-center justify-center shrink-0 shadow-xs">
                 <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -257,8 +294,13 @@ export const HeroOverlay: React.FC = () => {
 
             {/* Card 2: Contextual AI */}
             <a
-              href="#solutions"
-              className="snap-start shrink-0 w-[205px] p-2.5 rounded-xl bg-white/95 border border-neutral-200/90 shadow-md flex items-center gap-2.5"
+              href="#contextual-ai"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigate) onNavigate('contextual-ai');
+                else window.location.hash = '#contextual-ai';
+              }}
+              className="snap-start shrink-0 w-[205px] p-2.5 rounded-xl bg-white/95 border border-neutral-200/90 shadow-md flex items-center gap-2.5 cursor-pointer"
             >
               <div className="w-7.5 h-7.5 rounded-full bg-[#58548C] text-white flex items-center justify-center shrink-0 shadow-xs">
                 <Box className="w-3.5 h-3.5 stroke-[2]" />
@@ -271,10 +313,15 @@ export const HeroOverlay: React.FC = () => {
 
             {/* Card 3: Connected Ecosystems */}
             <a
-              href="#contact"
-              className="snap-start shrink-0 w-[205px] p-2.5 rounded-xl bg-white/95 border border-neutral-200/90 shadow-md flex items-center gap-2.5"
+              href="#connected-ecosystems"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigate) onNavigate('connected-ecosystems');
+                else window.location.hash = '#connected-ecosystems';
+              }}
+              className="snap-start shrink-0 w-[205px] p-2.5 rounded-xl bg-white/95 border border-neutral-200/90 shadow-md flex items-center gap-2.5 cursor-pointer"
             >
-              <div className="w-7.5 h-7.5 rounded-full bg-white border-2 border-[#F27C23] text-[#F27C23] flex items-center justify-center shrink-0 shadow-xs">
+              <div className="w-7.5 h-7.5 rounded-full bg-white border-2 border-[#45769B] text-[#45769B] flex items-center justify-center shrink-0 shadow-xs">
                 <Network className="w-3.5 h-3.5 stroke-[2]" />
               </div>
               <div className="text-left">
