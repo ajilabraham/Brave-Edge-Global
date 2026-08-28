@@ -3,8 +3,6 @@ import {
   ArrowRight,
   ArrowUpRight,
   Play,
-  ShieldCheck,
-  Cpu,
   ArrowDown,
   Box,
   Network,
@@ -29,7 +27,7 @@ interface HeroOverlayProps {
 
 export const HeroOverlay: React.FC<HeroOverlayProps> = ({ onNavigate }) => {
   return (
-    <div className="relative w-full h-full pt-16 lg:pt-20 pb-2 flex flex-col justify-between pointer-events-none z-10 select-none">
+    <div className="relative w-full h-full pt-20 lg:pt-28 pb-2 flex flex-col justify-between pointer-events-none z-10 select-none">
       
       {/* ========================================================================= */}
       {/* DESKTOP LAYOUT (>= 1024px) — 100% PRESERVED, UNTOUCHED & LOCKED           */}
@@ -37,61 +35,29 @@ export const HeroOverlay: React.FC<HeroOverlayProps> = ({ onNavigate }) => {
       <div className="hidden lg:grid max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-12 w-full h-full grid-cols-12 gap-8 lg:gap-10 items-center my-auto">
         
         {/* LEFT HERO SECTION (Cols 1-5) */}
-        <div className="lg:col-span-5 xl:col-span-5 space-y-6 pointer-events-auto text-left z-20 max-w-xl">
+        <div className="lg:col-span-5 xl:col-span-5 space-y-7 lg:space-y-8 pt-4 lg:pt-8 pointer-events-auto text-left z-20 max-w-xl">
           {/* Micro Tag Pill */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#f0ecfc] text-[#58548C] text-xs font-extrabold tracking-wider uppercase shadow-2xs">
+          <div className="inline-flex items-center gap-2.5 px-4.5 py-2 rounded-full bg-[#f0ecfc] text-[#58548C] text-xs sm:text-[13px] font-extrabold tracking-wider uppercase shadow-2xs">
             <span className="w-2.5 h-2.5 rounded-full bg-[#F27C23]" />
-            <span>YOU VISITED. IT NOTICED. NOW IT'S YOUR TURN</span>
+            <span>YOU VISITED. WE NOTICED. NOW IT'S YOUR TURN</span>
           </div>
 
-          {/* Grand Main Headline */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-neutral-900 tracking-tight leading-[1.05]">
-            Own your
+          {/* Grand Main Headline (+10% Font Size) */}
+          <h1 className="text-[38px] sm:text-[50px] lg:text-[62px] xl:text-[74px] 2xl:text-[80px] font-black text-neutral-900 tracking-tight leading-[1.06]">
+            Own and<br />
+            control your
             <span className="block bg-gradient-to-r from-[#F27C23] via-[#E75038] via-[#7B4699] to-[#453E85] bg-clip-text text-transparent font-black mt-1">
-              Intelligence.
+              Intelligence
             </span>
           </h1>
 
-          {/* Supporting Copy */}
-          <div className="text-base sm:text-lg text-neutral-600 font-normal leading-relaxed max-w-md">
+          {/* Supporting Copy (+10% Font Size & Optimal Spacing) */}
+          <div className="text-[17.5px] sm:text-[20px] text-neutral-600 font-normal leading-relaxed max-w-lg">
             <p>Turn your website into an intelligent digital experience built around your business, your knowledge and your audience.</p>
           </div>
 
-          {/* 2 Horizontal Side-by-Side Value Items */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 max-w-md">
-            {/* Item 1 */}
-            <div className="flex items-start gap-2.5">
-              <div className="p-0.5 text-[#F27C23] shrink-0 mt-0.5">
-                <ShieldCheck className="w-5 h-5 stroke-[1.75]" />
-              </div>
-              <div>
-                <h4 className="text-xs sm:text-sm font-bold text-neutral-900 leading-snug uppercase">
-                  YOUR BUSINESS, UNDERSTOOD
-                </h4>
-                <p className="text-xs text-neutral-500 leading-tight mt-0.5">
-                  AI that connects your knowledge, data and context with your website.
-                </p>
-              </div>
-            </div>
-
-            {/* Item 2 */}
-            <div className="flex items-start gap-2.5">
-              <div className="p-0.5 text-[#58548C] shrink-0 mt-0.5">
-                <Cpu className="w-5 h-5 stroke-[1.75]" />
-              </div>
-              <div>
-                <h4 className="text-xs sm:text-sm font-bold text-neutral-900 leading-snug uppercase">
-                  YOUR AUDIENCE, UNDERSTOOD
-                </h4>
-                <p className="text-xs text-neutral-500 leading-tight mt-0.5">
-                  Web experiences that recognise your visitors intent and respond intelligently.
-                </p>
-              </div>
-            </div>
-          </div>
-
           {/* Action CTAs */}
-          <div className="flex flex-wrap items-center gap-4 pt-3">
+          <div className="flex flex-wrap items-center gap-4 pt-4 lg:pt-6">
             <a
               href="#contact"
               onClick={(e) => {
@@ -215,34 +181,35 @@ export const HeroOverlay: React.FC<HeroOverlayProps> = ({ onNavigate }) => {
           {/* Micro Tag Pill */}
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f0ecfc] text-[#58548C] text-[10px] sm:text-xs font-extrabold tracking-wider uppercase shadow-2xs mb-3.5">
             <span className="w-2 h-2 rounded-full bg-[#F27C23]" />
-            <span>YOU VISITED. IT NOTICED. NOW IT'S YOUR TURN</span>
+            <span>YOU VISITED. WE NOTICED. NOW IT'S YOUR TURN</span>
           </div>
 
           {/* 2-Column Mobile Grid: Left Headline & Subtext | Right CTAs */}
           <div className="grid grid-cols-12 gap-2.5 items-start">
             
             {/* Left Column (Cols 1-7): Punchy Headline & Subtext */}
-            <div className="col-span-7 space-y-1.5">
-              <h1 className="text-2xl sm:text-3xl font-black text-neutral-900 tracking-tight leading-[1.05]">
-                Own your
+            <div className="col-span-7 space-y-2">
+              <h1 className="text-[24px] sm:text-[28px] font-black text-neutral-900 tracking-tight leading-[1.06]">
+                Own and<br />
+                control your
                 <span className="block bg-gradient-to-r from-[#F27C23] via-[#E75038] to-[#58548C] bg-clip-text text-transparent font-black mt-0.5">
-                  Intelligence.
+                  Intelligence
                 </span>
               </h1>
-              <div className="text-[11px] sm:text-xs text-neutral-600 font-normal leading-tight">
+              <div className="text-xs sm:text-[13px] text-neutral-600 font-normal leading-snug">
                 <p>Turn your website into an intelligent digital experience built around your business, your knowledge and your audience.</p>
               </div>
             </div>
 
             {/* Right Column (Cols 8-12): Compact Action CTAs */}
-            <div className="col-span-5 flex flex-col gap-1.5 pt-0.5">
+            <div className="col-span-5 flex flex-col gap-2 pt-0.5">
               <a
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
                   if (onNavigate) onNavigate('services');
                 }}
-                className="inline-flex items-center justify-center gap-1 bg-[#F27C23] text-white px-2.5 py-2 rounded-xl text-[10px] sm:text-[11px] font-bold shadow-md text-center leading-tight cursor-pointer"
+                className="inline-flex items-center justify-center gap-1 bg-[#F27C23] text-white px-2.5 py-2.5 rounded-xl text-[11px] sm:text-xs font-bold shadow-md text-center leading-tight cursor-pointer"
               >
                 <span>Explore how it works</span>
                 <ArrowRight className="w-3 h-3 shrink-0" />
@@ -250,32 +217,17 @@ export const HeroOverlay: React.FC<HeroOverlayProps> = ({ onNavigate }) => {
 
               <a
                 href="#use-cases"
-                className="inline-flex items-center justify-center gap-1 bg-white/95 border border-[#58548C]/30 text-[#58548C] px-2.5 py-2 rounded-xl text-[10px] sm:text-[11px] font-bold shadow-2xs text-center leading-tight"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (onNavigate) onNavigate('use-cases');
+                }}
+                className="inline-flex items-center justify-center gap-1 bg-white/95 border border-[#58548C]/30 text-[#58548C] px-2.5 py-2.5 rounded-xl text-[11px] sm:text-xs font-bold shadow-2xs text-center leading-tight cursor-pointer"
               >
                 <Play className="w-2.5 h-2.5 fill-[#58548C] text-[#58548C] shrink-0" />
                 <span>See real use cases</span>
               </a>
             </div>
 
-          </div>
-
-          {/* 2 Value Items */}
-          <div className="grid grid-cols-2 gap-2 pt-1">
-            <div className="flex items-start gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#F27C23] shrink-0 mt-0.5" />
-              <div>
-                <h4 className="text-[10px] sm:text-xs font-bold text-neutral-900 leading-snug uppercase">YOUR BUSINESS, UNDERSTOOD</h4>
-                <p className="text-[9px] sm:text-[10px] text-neutral-500 leading-tight">AI that connects your knowledge, data and context with your website.</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-1.5">
-              <Cpu className="w-3.5 h-3.5 text-[#58548C] shrink-0 mt-0.5" />
-              <div>
-                <h4 className="text-[10px] sm:text-xs font-bold text-neutral-900 leading-snug uppercase">YOUR AUDIENCE, UNDERSTOOD</h4>
-                <p className="text-[9px] sm:text-[10px] text-neutral-500 leading-tight">Web experiences that recognise your visitors intent and respond intelligently.</p>
-              </div>
-            </div>
           </div>
         </div>
 

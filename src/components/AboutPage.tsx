@@ -79,12 +79,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({
           {/* Quick Action Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
             <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                if (onNavigateContact) onNavigateContact();
-                else window.location.hash = '#contact';
-              }}
+              href="https://www.braveedge.in/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2.5 bg-[#F27C23] hover:bg-[#E06B12] text-white px-7 py-3.5 rounded-2xl text-sm font-bold shadow-lg shadow-orange-500/20 hover:shadow-xl transition-all duration-300 group cursor-pointer"
             >
               <span>Partner with Us</span>

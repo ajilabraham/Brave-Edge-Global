@@ -17,9 +17,10 @@ export const HeroLeftOverlay: React.FC = () => {
 
           {/* Main Headline */}
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-neutral-900 tracking-tight leading-[1.05]">
-            Own your
+            Own and<br />
+            control your
             <span className="block bg-gradient-to-r from-[#F27C23] via-[#E75038] via-[#7B4699] to-[#453E85] bg-clip-text text-transparent font-black mt-1">
-              Intelligence.
+              Intelligence
             </span>
           </h1>
 
