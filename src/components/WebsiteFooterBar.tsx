@@ -118,7 +118,16 @@ export const WebsiteFooterBar: React.FC<WebsiteFooterBarProps> = ({ onNavigate }
             About
           </button>
 
-          {/* 6. Contact Us */}
+          {/* 6. Download Knowledge Base PDF */}
+          <a
+            href="/Brave_Edge_Knowledge_Base.pdf"
+            download="Brave_Edge_Knowledge_Base.pdf"
+            className="hover:text-[#F27C23] transition-colors font-semibold text-neutral-700 hover:scale-105 transform duration-200 inline-flex items-center gap-1"
+          >
+            <span>Knowledge Base (PDF)</span>
+          </a>
+
+          {/* 7. Contact Us */}
           <button
             onClick={() => handleNav('contact')}
             className="hover:text-[#F27C23] transition-colors font-semibold text-neutral-700 hover:scale-105 transform duration-200 cursor-pointer bg-transparent border-0 p-0"
@@ -126,7 +135,7 @@ export const WebsiteFooterBar: React.FC<WebsiteFooterBarProps> = ({ onNavigate }
             Contact Us
           </button>
 
-          {/* 5. Privacy */}
+          {/* 8. Privacy */}
           <a
             href="#privacy"
             className="hover:text-neutral-900 transition-colors text-neutral-500 hover:scale-105 transform duration-200"

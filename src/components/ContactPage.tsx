@@ -10,7 +10,8 @@ import {
   Building2,
   Globe2,
   Sparkles,
-  ArrowRight
+  ArrowRight,
+  FileDown
 } from 'lucide-react';
 import { WebsiteFooterBar } from './WebsiteFooterBar';
 
@@ -175,10 +176,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                   <div>
                     <div className="font-bold text-neutral-900">Phone</div>
                     <a
-                      href="tel:+3584510178XX"
+                      href="tel:+358451017801"
                       className="text-neutral-600 hover:text-[#58548C] transition-colors font-mono"
                     >
-                      +358 45 10178XX
+                      +358 45 1017801
                     </a>
                   </div>
                 </div>
@@ -233,6 +234,27 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                   <span>EU AI Act & FIN-FSA regulatory compliance</span>
                 </div>
               </div>
+            </div>
+
+            {/* Knowledge Base Download Card */}
+            <div className="p-4 rounded-2xl bg-gradient-to-r from-orange-500/10 via-amber-500/5 to-white border border-orange-200/80 flex items-center justify-between text-xs shadow-2xs">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-xl bg-[#F27C23] text-white flex items-center justify-center shrink-0 shadow-xs">
+                  <FileDown className="w-4 h-4" />
+                </div>
+                <div>
+                  <span className="text-neutral-900 font-bold block">Brave Edge Knowledge Base</span>
+                  <span className="text-[11px] text-neutral-500">12-Page Complete PDF for Sales & AI Agents</span>
+                </div>
+              </div>
+              <a
+                href="/Brave_Edge_Knowledge_Base.pdf"
+                download="Brave_Edge_Knowledge_Base.pdf"
+                className="font-bold text-[#F27C23] hover:text-orange-700 hover:underline flex items-center gap-1 shrink-0 ml-2 px-3 py-1.5 rounded-xl bg-white border border-orange-200 shadow-2xs hover:shadow-xs transition-all"
+              >
+                <span>Download PDF</span>
+                <FileDown className="w-3 h-3" />
+              </a>
             </div>
 
             {/* Quick Vendor Link Pill */}
