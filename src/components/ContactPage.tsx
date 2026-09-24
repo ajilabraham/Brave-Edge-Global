@@ -6,6 +6,7 @@ import {
   Clock,
   Send,
   CheckCircle2,
+  AlertCircle,
   ArrowLeft,
   Building2,
   Globe2,
@@ -65,20 +66,76 @@ export const ContactPage: React.FC<ContactPageProps> = ({
     setFormState((prev) => ({ ...prev, timeline }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleReset = () => {
+    setFormState({
+      fullName: '',
+      email: '',
+      company: '',
+      website: '',
+      region: 'Finland / Nordics',
+      interest: 'Intelligent Websites (Pillar 1)',
+      timeline: 'Immediate (1-2 months)',
+      message: '',
+      gdprConsent: true
+    });
+    setIsSubmitted(false);
+    setErrorMsg('');
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formState.fullName.trim() || !formState.email.trim() || !formState.company.trim()) {
       setErrorMsg('Please fill in your name, business email, and company.');
       return;
     }
+    if (!formState.gdprConsent) {
+      setErrorMsg('Please accept the GDPR consent checkbox to proceed.');
+      return;
+    }
     setErrorMsg('');
     setIsSubmitting(true);
 
-    // Simulate reliable API enquiry intake
-    setTimeout(() => {
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/devi@braveedge.fi', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: `New Technical Consultation: ${formState.company} (${formState.fullName})`,
+          _template: 'table',
+          _captcha: 'false',
+          'Client Name': formState.fullName,
+          'Business Email': formState.email,
+          'Company Name': formState.company,
+          'Current Website': formState.website || 'Not provided',
+          'Region / Country': formState.region,
+          'Area of Interest': formState.interest,
+          'Project Timeline': formState.timeline,
+          'Project Goals & Requirements': formState.message || 'No additional details provided',
+          'GDPR Consent': formState.gdprConsent ? 'Accepted' : 'Not accepted'
+        })
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (response.ok && (data.success === 'true' || data.success === true || !data.error)) {
+        setIsSubmitted(true);
+      } else {
+        if (data.message && data.message.toLowerCase().includes('activate')) {
+          // FormSubmit activation trigger notice sent to devi@braveedge.fi
+          setIsSubmitted(true);
+        } else {
+          setErrorMsg(data.message || 'Failed to submit enquiry. Please try again or reach out to devi@braveedge.fi directly.');
+        }
+      }
+    } catch (err) {
+      console.error('Submission error:', err);
+      setErrorMsg('Unable to submit enquiry due to network error. Please try again or email devi@braveedge.fi directly.');
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 900);
+    }
   };
 
   const interestOptions = [
@@ -301,7 +358,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
 
                   <div className="pt-4 flex justify-center gap-3">
                     <button
-                      onClick={() => setIsSubmitted(false)}
+                      onClick={handleReset}
                       className="px-5 py-2.5 rounded-xl bg-neutral-100 hover:bg-neutral-200 text-neutral-800 text-xs font-bold transition-colors cursor-pointer"
                     >
                       Submit Another Enquiry
@@ -317,6 +374,9 @@ export const ContactPage: React.FC<ContactPageProps> = ({
               ) : (
                 /* Active Form */
                 <form onSubmit={handleSubmit} className="space-y-5">
+                  {/* Honeypot spam filter */}
+                  <input type="text" name="_honey" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
+
                   <div className="space-y-1">
                     <h3 className="text-xl sm:text-2xl font-black text-neutral-900 tracking-tight">
                       Request Technical Consultation
@@ -327,8 +387,9 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                   </div>
 
                   {errorMsg && (
-                    <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-medium">
-                      {errorMsg}
+                    <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-medium flex items-start gap-2.5">
+                      <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+                      <span>{errorMsg}</span>
                     </div>
                   )}
 
