@@ -95,17 +95,30 @@ export const ContactPage: React.FC<ContactPageProps> = ({
     setErrorMsg('');
     setIsSubmitting(true);
 
+    const accessKey =
+      (import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined)?.trim() ||
+      '47c69ebe-9750-4972-ae30-e71ca87d30b2';
+
+    if (!accessKey) {
+      setErrorMsg(
+        'Web3Forms access key is not configured. Please add VITE_WEB3FORMS_ACCESS_KEY to your .env file or contact devi@braveedge.fi directly.'
+      );
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      const response = await fetch('https://formsubmit.co/ajax/devi@braveedge.fi', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          _subject: `New Technical Consultation: ${formState.company} (${formState.fullName})`,
-          _template: 'table',
-          _captcha: 'false',
+          access_key: accessKey,
+          subject: `New Technical Consultation: ${formState.company} (${formState.fullName})`,
+          from_name: 'Brave Edge Global',
+          botcheck: '',
           'Client Name': formState.fullName,
           'Business Email': formState.email,
           'Company Name': formState.company,
@@ -120,15 +133,12 @@ export const ContactPage: React.FC<ContactPageProps> = ({
 
       const data = await response.json().catch(() => ({}));
 
-      if (response.ok && (data.success === 'true' || data.success === true || !data.error)) {
+      if (response.ok && data.success) {
         setIsSubmitted(true);
       } else {
-        if (data.message && data.message.toLowerCase().includes('activate')) {
-          // FormSubmit activation trigger notice sent to devi@braveedge.fi
-          setIsSubmitted(true);
-        } else {
-          setErrorMsg(data.message || 'Failed to submit enquiry. Please try again or reach out to devi@braveedge.fi directly.');
-        }
+        setErrorMsg(
+          data.message || 'Failed to submit enquiry. Please try again or reach out to devi@braveedge.fi directly.'
+        );
       }
     } catch (err) {
       console.error('Submission error:', err);
@@ -374,8 +384,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({
               ) : (
                 /* Active Form */
                 <form onSubmit={handleSubmit} className="space-y-5">
-                  {/* Honeypot spam filter */}
-                  <input type="text" name="_honey" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
+                  {/* Web3Forms Honeypot spam filter */}
+                  <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
 
                   <div className="space-y-1">
                     <h3 className="text-xl sm:text-2xl font-black text-neutral-900 tracking-tight">
